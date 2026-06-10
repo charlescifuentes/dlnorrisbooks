@@ -1,0 +1,33 @@
+/**
+ * Brand typography utilities — Inter (UI) and Newsreader (editorial).
+ */
+
+@layer components {
+	.eyebrow {
+		@apply font-sans text-eyebrow font-semibold tracking-eyebrow text-sage uppercase;
+	}
+
+	.display-large {
+		@apply font-editorial text-display leading-[1.1] font-normal italic text-muted;
+	}
+
+	.section-title {
+		@apply font-editorial text-section leading-[1.2] font-normal italic text-muted;
+	}
+
+	.card-title {
+		@apply font-editorial text-card leading-[1.2] font-normal italic text-muted;
+	}
+
+	.pull-quote {
+		@apply font-editorial text-pull-quote leading-[1.4] font-normal italic text-muted;
+	}
+
+	.attribution {
+		@apply font-sans text-eyebrow font-semibold tracking-eyebrow text-sage uppercase;
+	}
+
+	.body-reading {
+		@apply font-editorial text-body leading-[1.6] text-muted;
+	}
+}

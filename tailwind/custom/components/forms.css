@@ -1,0 +1,21 @@
+/**
+ * Input fields — style guide UI pattern.
+ */
+
+@layer components {
+	.input-field {
+		@apply w-full rounded-full border border-ink bg-transparent px-5 py-3 font-editorial text-body text-muted transition-colors duration-200 placeholder:text-sage;
+	}
+
+	.input-field:hover {
+		@apply bg-oat/30;
+	}
+
+	.input-field:focus {
+		@apply bg-sage-accent/10 outline-2 outline-offset-2 outline-sage-accent;
+	}
+
+	.input-label {
+		@apply mb-2 block font-sans text-eyebrow font-semibold tracking-eyebrow text-muted uppercase;
+	}
+}

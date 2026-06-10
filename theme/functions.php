@@ -38,7 +38,7 @@ if ( ! defined( 'DLNORRISBOOKS_TYPOGRAPHY_CLASSES' ) ) {
 	 */
 	define(
 		'DLNORRISBOOKS_TYPOGRAPHY_CLASSES',
-		'prose prose-neutral max-w-none prose-a:text-primary'
+		'prose prose-dlnorrisbooks max-w-none prose-a:text-gold'
 	);
 }
 
@@ -76,6 +76,16 @@ if ( ! function_exists( 'dlnorrisbooks_setup' ) ) :
 		 * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
 		 */
 		add_theme_support( 'post-thumbnails' );
+
+		add_theme_support(
+			'custom-logo',
+			array(
+				'height'      => 48,
+				'width'       => 240,
+				'flex-height' => true,
+				'flex-width'  => true,
+			)
+		);
 
 		// This theme uses wp_nav_menu() in two locations.
 		register_nav_menus(

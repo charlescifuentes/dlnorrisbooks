@@ -2,10 +2,14 @@
  * Custom styles to immediately follow Tailwind’s `base` layer
  */
 
-/**
- * This uses the background and foreground colors declared in the `theme.json`
- * file and is applied both to the front end and in the block editor.
- */
 body {
-	@apply bg-background text-foreground font-sans;
+	@apply bg-background font-editorial text-body leading-[1.6] text-foreground antialiased;
+}
+
+a {
+	@apply text-gold transition-colors duration-200;
+}
+
+a:not(.btn-pill):hover {
+	@apply text-muted;
 }

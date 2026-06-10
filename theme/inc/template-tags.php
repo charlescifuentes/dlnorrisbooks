@@ -268,6 +268,87 @@ if ( ! function_exists( 'dlnorrisbooks_the_posts_navigation' ) ) :
 	}
 endif;
 
+if ( ! function_exists( 'dlnorrisbooks_site_branding' ) ) :
+	/**
+	 * Displays the site branding (custom logo or site title).
+	 */
+	function dlnorrisbooks_site_branding() {
+		echo '<div class="site-branding">';
+
+		if ( has_custom_logo() ) {
+			the_custom_logo();
+		} else {
+			$tag = is_front_page() && ! is_paged() ? 'h1' : 'p';
+
+			printf(
+				'<%1$s class="site-branding__title"><a href="%2$s" rel="home" class="site-branding__link">%3$s</a></%1$s>',
+				$tag, // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+				esc_url( home_url( '/' ) ),
+				esc_html( get_bloginfo( 'name' ) )
+			);
+		}
+
+		echo '</div>';
+	}
+endif;
+
+if ( ! function_exists( 'dlnorrisbooks_get_header_cta_item' ) ) :
+	/**
+	 * Returns the primary menu item marked as the header CTA.
+	 *
+	 * @return WP_Post|null
+	 */
+	function dlnorrisbooks_get_header_cta_item() {
+		$locations = get_nav_menu_locations();
+
+		if ( empty( $locations['menu-1'] ) ) {
+			return null;
+		}
+
+		$items = wp_get_nav_menu_items( $locations['menu-1'] );
+
+		if ( empty( $items ) ) {
+			return null;
+		}
+
+		foreach ( $items as $item ) {
+			if (
+				in_array( 'cta', $item->classes, true ) ||
+				false !== stripos( $item->title, 'subscribe' )
+			) {
+				return $item;
+			}
+		}
+
+		return null;
+	}
+endif;
+
+if ( ! function_exists( 'dlnorrisbooks_header_cta_link' ) ) :
+	/**
+	 * Prints the mobile header CTA button.
+	 *
+	 * @param string $modifier_class Additional wrapper classes.
+	 */
+	function dlnorrisbooks_header_cta_link( $modifier_class = '' ) {
+		$item = dlnorrisbooks_get_header_cta_item();
+
+		if ( ! $item ) {
+			return;
+		}
+
+		$classes = trim( 'header-cta ' . $modifier_class );
+
+		printf(
+			'<div class="%1$s"><a class="btn-pill" href="%2$s"%3$s>%4$s</a></div>',
+			esc_attr( $classes ),
+			esc_url( $item->url ),
+			$item->target ? ' target="' . esc_attr( $item->target ) . '"' : '',
+			esc_html( $item->title )
+		);
+	}
+endif;
+
 if ( ! function_exists( 'dlnorrisbooks_content_class' ) ) :
 	/**
 	 * Displays the class names for the post content wrapper.

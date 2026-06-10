@@ -1,5 +1,5 @@
 /**
- * Custom `@font-face` rules
- *
- * These will be added immediately before Tailwind’s `base` layer.
+ * D. L. Norris brand fonts — Inter (UI) and Newsreader (editorial).
  */
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400&display=swap");

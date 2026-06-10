@@ -4,13 +4,6 @@
  * https://github.com/tailwindlabs/tailwindcss-typography
  */
 
-/**
- * Tailwind Typography uses the font weights 400 through 900. If you’re not
- * using a variable font, you may need to limit the number of supported
- * weights. Below are all of the default weights, ready to be overridden. for
- * example, if you wanted to use only the weights 400 and 700, you might change
- * `-medium` to `400`, and `-semibold`, `-extrabold` and `-black` to `700`.
- */
 @theme {
 	--tw-prose-font-normal: 400;
 	--tw-prose-font-medium: 500;
@@ -20,41 +13,35 @@
 	--tw-prose-font-black: 900;
 }
 
-/**
- * By default, _tw uses Tailwind Typography's Neutral gray scale. If you are
- * adapting an existing design and you need to set specific colors throughout,
- * you can do so here. In your `./theme/functions.php file, you will need to
- * replace `-neutral` with `-dlnorrisbooks`.
- */
 @utility prose-dlnorrisbooks {
 	--tw-prose-body: --theme(--color-foreground, initial);
 	--tw-prose-headings: --theme(--color-foreground, initial);
-	--tw-prose-lead: --theme(--color-foreground, initial);
-	--tw-prose-links: --theme(--color-primary, initial);
+	--tw-prose-lead: --theme(--color-sage, initial);
+	--tw-prose-links: --theme(--color-gold, initial);
 	--tw-prose-bold: --theme(--color-foreground, initial);
-	--tw-prose-counters: --theme(--color-foreground, initial);
-	--tw-prose-bullets: --theme(--color-foreground, initial);
-	--tw-prose-hr: --theme(--color-foreground, initial);
+	--tw-prose-counters: --theme(--color-sage, initial);
+	--tw-prose-bullets: --theme(--color-sage, initial);
+	--tw-prose-hr: --theme(--color-ink, initial);
 	--tw-prose-quotes: --theme(--color-foreground, initial);
-	--tw-prose-quote-borders: --theme(--color-primary, initial);
-	--tw-prose-captions: --theme(--color-foreground, initial);
+	--tw-prose-quote-borders: --theme(--color-ink, initial);
+	--tw-prose-captions: --theme(--color-sage, initial);
 	--tw-prose-kbd: --theme(--color-foreground, initial);
 	--tw-prose-kbd-shadows: --theme(--color-foreground, initial);
 	--tw-prose-code: --theme(--color-foreground, initial);
 	--tw-prose-pre-code: --theme(--color-background, initial);
 	--tw-prose-pre-bg: --theme(--color-foreground, initial);
-	--tw-prose-th-borders: --theme(--color-foreground, initial);
-	--tw-prose-td-borders: --theme(--color-foreground, initial);
+	--tw-prose-th-borders: --theme(--color-ink, initial);
+	--tw-prose-td-borders: --theme(--color-ink, initial);
 	--tw-prose-invert-body: --theme(--color-background, initial);
 	--tw-prose-invert-headings: --theme(--color-background, initial);
 	--tw-prose-invert-lead: --theme(--color-background, initial);
-	--tw-prose-invert-links: --theme(--color-primary, initial);
+	--tw-prose-invert-links: --theme(--color-gold, initial);
 	--tw-prose-invert-bold: --theme(--color-background, initial);
 	--tw-prose-invert-counters: --theme(--color-background, initial);
 	--tw-prose-invert-bullets: --theme(--color-background, initial);
 	--tw-prose-invert-hr: --theme(--color-background, initial);
 	--tw-prose-invert-quotes: --theme(--color-background, initial);
-	--tw-prose-invert-quote-borders: --theme(--color-primary, initial);
+	--tw-prose-invert-quote-borders: --theme(--color-gold, initial);
 	--tw-prose-invert-captions: --theme(--color-background, initial);
 	--tw-prose-invert-kbd: --theme(--color-background, initial);
 	--tw-prose-invert-kbd-shadows: --theme(--color-background, initial);
@@ -65,11 +52,51 @@
 	--tw-prose-invert-td-borders: --theme(--color-background, initial);
 }
 
-/**
- * Import Tailwind Typography fork. If you want to make extensive changes to
- * Tailwind Typography, you may want to replace the import below with the
- * contents of this file and then edit it directly:
- *
- * https://github.com/gregsullivan/_tw-typography/blob/master/index.css
- */
 @import "@_tw/typography";
+
+/**
+ * Editorial typography — Newsreader for reading content, Inter for UI labels
+ * inside prose (captions styled separately).
+ */
+.prose-dlnorrisbooks {
+	font-family: var(--font-editorial);
+	font-size: var(--text-body);
+	line-height: 1.6;
+}
+
+.prose-dlnorrisbooks :where(h1):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+	font-family: var(--font-editorial);
+	font-size: var(--text-display);
+	font-style: italic;
+	font-weight: 400;
+	line-height: 1.1;
+}
+
+.prose-dlnorrisbooks :where(h2):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+	font-family: var(--font-editorial);
+	font-size: var(--text-section);
+	font-style: italic;
+	font-weight: 400;
+	line-height: 1.2;
+}
+
+.prose-dlnorrisbooks :where(h3):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+	font-family: var(--font-editorial);
+	font-size: var(--text-card);
+	font-style: italic;
+	font-weight: 400;
+	line-height: 1.2;
+}
+
+.prose-dlnorrisbooks :where(blockquote):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+	font-family: var(--font-editorial);
+	font-size: var(--text-pull-quote);
+	font-style: italic;
+	line-height: 1.4;
+}
+
+.prose-dlnorrisbooks :where(figcaption):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+	font-family: var(--font-editorial);
+	font-size: var(--text-caption);
+	font-style: italic;
+}

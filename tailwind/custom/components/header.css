@@ -1,0 +1,134 @@
+/**
+ * Site header — logo left, nav center, Subscribe right (desktop).
+ *
+ * Intentionally unlayered: Tailwind preflight is unlayered, so rules inside
+ * @layer components lose to `* { padding: 0 }` regardless of specificity.
+ */
+
+.site-header {
+	@apply relative w-full border-b border-ink bg-peach;
+}
+
+.site-header__inner {
+	@apply relative flex w-full items-center justify-between gap-4 bg-peach px-8 py-5 sm:px-10 lg:px-16 lg:py-6 xl:px-20 2xl:px-24;
+}
+
+.site-header__brand {
+	@apply relative z-10 shrink-0;
+}
+
+.site-branding {
+	@apply shrink-0;
+}
+
+.site-branding .custom-logo-link {
+	@apply block;
+}
+
+.site-branding .custom-logo {
+	@apply h-auto max-h-10 w-auto lg:max-h-12;
+}
+
+.site-branding__title {
+	@apply m-0 leading-none;
+}
+
+.site-branding__link {
+	@apply font-editorial text-xl leading-none font-normal text-muted italic no-underline transition-colors duration-200 lg:text-[1.75rem];
+}
+
+.site-branding__link:hover {
+	@apply text-sage;
+}
+
+.site-header__nav {
+	@apply static;
+}
+
+.site-header__end {
+	@apply relative z-10 flex shrink-0 items-center gap-3;
+}
+
+.primary-menu {
+	@apply m-0 flex list-none flex-col gap-1 p-0 lg:flex-row lg:items-center lg:gap-10 xl:gap-14;
+}
+
+.primary-menu__link {
+	@apply inline-block border-b-2 border-transparent pb-1 font-sans text-eyebrow font-normal tracking-[0.25em] text-muted no-underline uppercase transition-colors duration-200;
+}
+
+.primary-menu__link:hover,
+.primary-menu__link:focus-visible {
+	@apply text-sage;
+}
+
+.primary-menu .current-menu-item > .primary-menu__link,
+.primary-menu .current_page_item > .primary-menu__link {
+	@apply border-muted font-bold text-muted;
+}
+
+/* Desktop: nav pinned to true horizontal center of the header bar */
+@media (min-width: 1024px) {
+	.site-header__nav {
+		@apply absolute top-1/2 left-1/2 z-0 -translate-x-1/2 -translate-y-1/2;
+	}
+}
+
+/* Mobile: nav drawer below header bar */
+@media (max-width: 1023px) {
+	.site-header__nav {
+		@apply pointer-events-none absolute top-full right-0 left-0 z-50 translate-x-0 translate-y-0 -translate-y-2 border-b border-ink bg-oat opacity-0 transition-all duration-200;
+	}
+
+	.site-header__nav.is-open {
+		@apply pointer-events-auto translate-y-0 opacity-100;
+	}
+
+	.primary-menu {
+		@apply gap-0 px-6 py-4;
+	}
+
+	.primary-menu > .menu-item .primary-menu__link {
+		@apply block w-full py-4;
+	}
+
+	.primary-menu > .menu-item {
+		@apply border-b border-ink/60 last:border-b-0;
+	}
+}
+
+.menu-toggle {
+	@apply relative inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-ink bg-transparent text-muted transition-colors duration-200 lg:hidden;
+}
+
+.menu-toggle:hover {
+	@apply bg-oat;
+}
+
+.menu-toggle:focus-visible {
+	@apply bg-sage-accent/20 outline-2 outline-offset-2 outline-sage-accent;
+}
+
+.menu-toggle__icon {
+	@apply absolute inset-0 m-auto;
+}
+
+.menu-toggle__icon--close {
+	@apply opacity-0;
+}
+
+.menu-toggle[aria-expanded="true"] .menu-toggle__icon--open {
+	@apply opacity-0;
+}
+
+.menu-toggle[aria-expanded="true"] .menu-toggle__icon--close {
+	@apply opacity-100;
+}
+
+.menu-toggle[aria-expanded="true"] {
+	@apply bg-oat;
+}
+
+body.mobile-menu-open {
+	@apply overflow-hidden;
+}

@@ -9,39 +9,48 @@
 
 ?>
 
-<header id="masthead">
+<header id="masthead" class="site-header">
+	<div class="site-header__inner">
+		<div class="site-header__brand">
+			<?php dlnorrisbooks_site_branding(); ?>
+		</div>
 
-	<div>
-		<?php
-		if ( is_front_page() ) :
-			?>
-			<h1><?php bloginfo( 'name' ); ?></h1>
+		<nav
+			id="site-navigation"
+			class="site-header__nav primary-navigation"
+			aria-label="<?php esc_attr_e( 'Main Navigation', 'dlnorrisbooks' ); ?>"
+		>
 			<?php
-		else :
+			wp_nav_menu(
+				array(
+					'theme_location' => 'menu-1',
+					'menu_id'        => 'primary-menu',
+					'menu_class'     => 'primary-menu',
+					'container'      => false,
+					'fallback_cb'    => false,
+					'depth'          => 1,
+				)
+			);
 			?>
-			<p><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
-			<?php
-		endif;
+		</nav>
 
-		$dlnorrisbooks_description = get_bloginfo( 'description', 'display' );
-		if ( $dlnorrisbooks_description || is_customize_preview() ) :
-			?>
-			<p><?php echo $dlnorrisbooks_description; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></p>
-		<?php endif; ?>
+		<div class="site-header__end">
+			<?php dlnorrisbooks_header_cta_link(); ?>
+
+			<button
+				type="button"
+				class="menu-toggle"
+				aria-controls="primary-menu"
+				aria-expanded="false"
+				aria-label="<?php esc_attr_e( 'Open menu', 'dlnorrisbooks' ); ?>"
+			>
+				<svg class="menu-toggle__icon menu-toggle__icon--open" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+					<path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+				</svg>
+				<svg class="menu-toggle__icon menu-toggle__icon--close" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+					<path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+				</svg>
+			</button>
+		</div>
 	</div>
-
-	<nav id="site-navigation" aria-label="<?php esc_attr_e( 'Main Navigation', 'dlnorrisbooks' ); ?>">
-		<button aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'dlnorrisbooks' ); ?></button>
-
-		<?php
-		wp_nav_menu(
-			array(
-				'theme_location' => 'menu-1',
-				'menu_id'        => 'primary-menu',
-				'items_wrap'     => '<ul id="%1$s" class="%2$s" aria-label="submenu">%3$s</ul>',
-			)
-		);
-		?>
-	</nav><!-- #site-navigation -->
-
 </header><!-- #masthead -->

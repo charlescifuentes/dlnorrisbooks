@@ -4,47 +4,48 @@
  * https://tailwindcss.com/docs/theme
  */
 
-/**
- * Your theme variables are merged with Tailwind’s defaults, either extending
- * the default theme with new variables or overriding the values of existing
- * variables.
- */
 @theme {
-	/**
-	 * These theme variables use CSS variables set by WordPress using values
-	 * from your `theme.json` file.
-	 *
-	 * If you are using the classic editor, you should use hardcoded color
-	 * values instead of the `var()` functions below.
-     */
-	--color-background: var(--wp--preset--color--background);
-	--color-foreground: var(--wp--preset--color--foreground);
-	--color-primary: var(--wp--preset--color--primary);
-	--color-secondary: var(--wp--preset--color--secondary);
-	--color-tertiary: var(--wp--preset--color--tertiary);
-	--container-content: var(--wp--style--global--content-size);
-	--container-wide: var(--wp--style--global--wide-size);
+	/* Brand colors — synced with theme.json */
+	--color-background: var(--wp--preset--color--background, #f4efe6);
+	--color-foreground: var(--wp--preset--color--foreground, #1f1a14);
+	--color-peach: var(--wp--preset--color--peach, #f4efe6);
+	--color-oat: var(--wp--preset--color--oat, #f5ddc9);
+	--color-ink: var(--wp--preset--color--ink, #e5e0d2);
+	--color-muted: var(--wp--preset--color--muted, #1f1a14);
+	--color-sage: var(--wp--preset--color--sage, #8a8470);
+	--color-sage-accent: var(--wp--preset--color--sage-accent, #5e8b8b);
+	--color-gold: var(--wp--preset--color--gold, #c49a3f);
+	--color-primary: var(--wp--preset--color--primary, #c49a3f);
+	--color-secondary: var(--wp--preset--color--secondary, #8a8470);
+	--color-tertiary: var(--wp--preset--color--tertiary, #5e8b8b);
 
-	/**
-	 * These are the default `font-family` theme variables included with
-     * Tailwind. You can update them below by adding custom fonts at the
-	 * beginning of each value.
-	 *
-	 * Default theme variables can be found in their entirety at the links
-	 * below, on GitHub or in Tailwind’s documentation, respectively:
-	 *
-	 * https://github.com/tailwindlabs/tailwindcss/blob/main/packages/tailwindcss/theme.css
-	 * https://tailwindcss.com/docs/theme#default-theme-variable-reference
-	 */
+	--container-content: var(--wp--style--global--content-size, 42rem);
+	--container-wide: var(--wp--style--global--wide-size, 72rem);
+
+	/* Inter = UI chrome; Newsreader = editorial content */
 	--font-sans:
-		ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
+		Inter, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
 		"Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-	--font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+	--font-editorial:
+		"Newsreader", Georgia, "Times New Roman", Times, serif;
+	--font-serif: var(--font-editorial);
 	--font-mono:
 		ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
 		"Liberation Mono", "Courier New", monospace;
 
-	/**
-	 * Add your theme below:
-	 */
+	/* Type scale from approved mockups */
+	--text-display: 5rem;
+	--text-display--line-height: 1.1;
+	--text-section: 3rem;
+	--text-section--line-height: 1.2;
+	--text-card: 2rem;
+	--text-card--line-height: 1.2;
+	--text-pull-quote: 2rem;
+	--text-pull-quote--line-height: 1.4;
+	--text-body: 1.25rem;
+	--text-body--line-height: 1.6;
+	--text-caption: 0.875rem;
+	--text-eyebrow: 0.75rem;
+	--text-eyebrow--line-height: 1.4;
+	--tracking-eyebrow: 0.2em;
 }

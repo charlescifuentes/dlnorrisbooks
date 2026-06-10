@@ -1,4 +1,4 @@
-dlnorrisbooks
+D. L. Norris Books and Blogs
 =============
 
 A custom theme based on UnderscoreTW for the D. L. Norris Books and Blogs Website

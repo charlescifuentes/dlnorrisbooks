@@ -1,0 +1,17 @@
+/**
+ * Outlined pill buttons — style guide UI pattern.
+ *
+ * Unlayered so preflight does not zero out padding and borders.
+ */
+
+.btn-pill {
+	@apply inline-flex items-center justify-center rounded-full border border-ink bg-transparent px-6 py-2.5 font-sans text-eyebrow font-semibold tracking-eyebrow text-muted no-underline uppercase transition-colors duration-200;
+}
+
+.btn-pill:hover {
+	@apply bg-oat text-muted no-underline;
+}
+
+.btn-pill:focus-visible {
+	@apply bg-sage-accent/20 text-muted no-underline outline-2 outline-offset-2 outline-sage-accent;
+}

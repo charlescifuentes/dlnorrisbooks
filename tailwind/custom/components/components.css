@@ -19,7 +19,7 @@
  */
 .page-title,
 .entry-title {
-	@apply max-w-content mx-auto mb-6 text-3xl font-extrabold;
+	@apply mx-auto mb-6 max-w-content font-editorial text-section leading-[1.2] font-normal italic text-muted;
 }
 
 /**
