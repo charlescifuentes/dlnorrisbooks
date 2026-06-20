@@ -1,0 +1,27 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "dlnorrisbooks/books",
+	"version": "0.1.0",
+	"title": "Books",
+	"category": "dlnorrisbooks",
+	"icon": "book",
+	"description": "Shows the latest books from the Books custom post type as a row of cards, on a wavy greige band.",
+	"keywords": [ "books", "collection", "cpt", "grid" ],
+	"textdomain": "dlnorrisbooks",
+	"attributes": {
+		"align": { "type": "string", "default": "full" },
+		"eyebrow": { "type": "string", "default": "Collected Volumes" },
+		"title": { "type": "string", "default": "The Books" },
+		"count": { "type": "number", "default": 5 },
+		"ctaText": { "type": "string", "default": "View All Books" },
+		"ctaUrl": { "type": "string", "default": "" }
+	},
+	"supports": {
+		"align": [ "full" ],
+		"anchor": true,
+		"html": false
+	},
+	"editorScript": "file:./index.js",
+	"render": "file:./render.php"
+}

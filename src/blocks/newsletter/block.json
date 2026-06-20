@@ -1,0 +1,29 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "dlnorrisbooks/newsletter",
+	"version": "0.1.0",
+	"title": "Newsletter Band",
+	"category": "dlnorrisbooks",
+	"icon": "email",
+	"description": "A dark email-signup band. Drop in a subscription form shortcode (e.g. Jetpack Blog Subscriptions).",
+	"keywords": [ "newsletter", "subscribe", "email", "signup" ],
+	"textdomain": "dlnorrisbooks",
+	"attributes": {
+		"align": { "type": "string", "default": "full" },
+		"eyebrow": { "type": "string", "default": "Newsletter" },
+		"heading": { "type": "string", "default": "Follow Us By Email" },
+		"description": {
+			"type": "string",
+			"default": "Enter your email address to follow this blog and receive notifications of new posts by email."
+		},
+		"formShortcode": { "type": "string", "default": "[jetpack_subscription_form]" }
+	},
+	"supports": {
+		"align": [ "full" ],
+		"anchor": true,
+		"html": false
+	},
+	"editorScript": "file:./index.js",
+	"render": "file:./render.php"
+}

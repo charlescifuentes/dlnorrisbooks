@@ -1,0 +1,27 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "dlnorrisbooks/testimonial",
+	"version": "0.1.0",
+	"title": "Testimonial",
+	"category": "dlnorrisbooks",
+	"icon": "testimonial",
+	"description": "A centered testimonial quote with a flanked, uppercase attribution.",
+	"keywords": [ "testimonial", "review", "quote", "praise" ],
+	"textdomain": "dlnorrisbooks",
+	"attributes": {
+		"align": { "type": "string", "default": "full" },
+		"quote": {
+			"type": "string",
+			"default": "To read Norris is to step out of the rushing river of contemporary life and onto a quiet, moss-covered bank. Essential reading for the overwhelmed."
+		},
+		"citation": { "type": "string", "default": "The Literary Review" }
+	},
+	"supports": {
+		"align": [ "full" ],
+		"anchor": true,
+		"html": false
+	},
+	"editorScript": "file:./index.js",
+	"render": "file:./render.php"
+}

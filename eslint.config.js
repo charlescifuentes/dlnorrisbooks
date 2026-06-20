@@ -14,7 +14,15 @@ const tailwindRules = tailwindRulesConfig?.rules || {};
 
 export default [
 	{
-		ignores: ['**/*.min.js', '**/vendor/'],
+		// Block sources (src/blocks) are JSX validated by the @wordpress/scripts
+		// webpack build and formatted by Prettier; the repo's espree-based
+		// config is not JSX-aware, so it skips them. theme/blocks is generated.
+		ignores: [
+			'**/*.min.js',
+			'**/vendor/',
+			'src/blocks/**',
+			'theme/blocks/**',
+		],
 	},
 	{
 		files: ['**/*.js'],

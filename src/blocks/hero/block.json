@@ -1,0 +1,33 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "dlnorrisbooks/hero",
+	"version": "0.1.0",
+	"title": "Hero",
+	"category": "dlnorrisbooks",
+	"icon": "cover-image",
+	"description": "Homepage hero — eyebrow, large display heading, subtitle, CTA and an author portrait over a faded photo mosaic.",
+	"keywords": [ "hero", "header", "intro", "banner" ],
+	"textdomain": "dlnorrisbooks",
+	"attributes": {
+		"align": { "type": "string", "default": "full" },
+		"eyebrow": { "type": "string", "default": "Books & Blog" },
+		"heading": { "type": "string", "default": "D. L. Norris" },
+		"subtitle": {
+			"type": "string",
+			"default": "Author & Motivational Speaker. Stories of resilience, heritage, and unconditional love."
+		},
+		"ctaText": { "type": "string", "default": "Start Reading" },
+		"ctaUrl": { "type": "string", "default": "#" },
+		"portraitId": { "type": "number", "default": 0 },
+		"portraitUrl": { "type": "string", "default": "" },
+		"portraitAlt": { "type": "string", "default": "" }
+	},
+	"supports": {
+		"align": [ "full" ],
+		"anchor": true,
+		"html": false
+	},
+	"editorScript": "file:./index.js",
+	"render": "file:./render.php"
+}

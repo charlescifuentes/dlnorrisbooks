@@ -6,63 +6,83 @@
 			"palette": [
 				{
 					"slug": "background",
-					"color": "#F4EFE6",
-					"name": "Peach"
+					"color": "#F5DDC9",
+					"name": "Background"
 				},
 				{
 					"slug": "foreground",
 					"color": "#1F1A14",
-					"name": "Muted"
+					"name": "Foreground"
+				},
+				{
+					"slug": "cream",
+					"color": "#FDF5EF",
+					"name": "Cream"
+				},
+				{
+					"slug": "blush",
+					"color": "#FAE9DA",
+					"name": "Blush"
 				},
 				{
 					"slug": "peach",
-					"color": "#F4EFE6",
+					"color": "#F5DDC9",
 					"name": "Peach"
 				},
 				{
+					"slug": "sand",
+					"color": "#ECC9A8",
+					"name": "Sand"
+				},
+				{
+					"slug": "clay",
+					"color": "#A87D57",
+					"name": "Clay"
+				},
+				{
+					"slug": "coffee",
+					"color": "#6B4D32",
+					"name": "Coffee"
+				},
+				{
+					"slug": "espresso",
+					"color": "#3B2414",
+					"name": "Espresso"
+				},
+				{
 					"slug": "oat",
-					"color": "#F5DDC9",
+					"color": "#E5E0D2",
 					"name": "Oat"
 				},
 				{
+					"slug": "stone",
+					"color": "#7D7668",
+					"name": "Stone"
+				},
+				{
+					"slug": "mist",
+					"color": "#E8F4F4",
+					"name": "Mist"
+				},
+				{
+					"slug": "teal",
+					"color": "#5E8B8B",
+					"name": "Teal"
+				},
+				{
+					"slug": "pine",
+					"color": "#375555",
+					"name": "Pine"
+				},
+				{
 					"slug": "ink",
-					"color": "#E5E0D2",
+					"color": "#1F1A14",
 					"name": "Ink"
 				},
 				{
-					"slug": "muted",
-					"color": "#1F1A14",
-					"name": "Muted"
-				},
-				{
-					"slug": "sage",
-					"color": "#8A8470",
-					"name": "Sage"
-				},
-				{
-					"slug": "sage-accent",
-					"color": "#5E8B8B",
-					"name": "Sage Accent"
-				},
-				{
-					"slug": "gold",
-					"color": "#C49A3F",
-					"name": "Gold"
-				},
-				{
-					"slug": "primary",
-					"color": "#C49A3F",
-					"name": "Gold"
-				},
-				{
-					"slug": "secondary",
-					"color": "#8A8470",
-					"name": "Sage"
-				},
-				{
-					"slug": "tertiary",
-					"color": "#5E8B8B",
-					"name": "Sage Accent"
+					"slug": "slate",
+					"color": "#7D756C",
+					"name": "Slate"
 				}
 			]
 		},

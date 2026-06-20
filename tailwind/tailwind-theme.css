@@ -5,19 +5,81 @@
  */
 
 @theme {
-	/* Brand colors — synced with theme.json */
-	--color-background: var(--wp--preset--color--background, #f4efe6);
-	--color-foreground: var(--wp--preset--color--foreground, #1f1a14);
-	--color-peach: var(--wp--preset--color--peach, #f4efe6);
-	--color-oat: var(--wp--preset--color--oat, #f5ddc9);
-	--color-ink: var(--wp--preset--color--ink, #e5e0d2);
-	--color-muted: var(--wp--preset--color--muted, #1f1a14);
-	--color-sage: var(--wp--preset--color--sage, #8a8470);
-	--color-sage-accent: var(--wp--preset--color--sage-accent, #5e8b8b);
-	--color-gold: var(--wp--preset--color--gold, #c49a3f);
-	--color-primary: var(--wp--preset--color--primary, #c49a3f);
-	--color-secondary: var(--wp--preset--color--secondary, #8a8470);
-	--color-tertiary: var(--wp--preset--color--tertiary, #5e8b8b);
+	/*
+	 * Color tokens — mirrored 1:1 from the Figma design system variables
+	 * ("sage&gold" collection). The numeric scales are the source of truth;
+	 * semantic + friendly aliases below reference them.
+	 */
+
+	/* Primary — warm cream → espresso */
+	--color-primary-100: #fdf5ef;
+	--color-primary-200: #fae9da;
+	--color-primary-300: #f8dfc9;
+	--color-primary-400: #f5ddc9;
+	--color-primary-500: #ecc9a8;
+	--color-primary-600: #d4a882;
+	--color-primary-700: #a87d57;
+	--color-primary-800: #6b4d32;
+	--color-primary-900: #3b2414;
+
+	/* Secondary — warm greige / oat */
+	--color-secondary-100: #f7f5f0;
+	--color-secondary-200: #f0ece4;
+	--color-secondary-300: #eae5dc;
+	--color-secondary-400: #e5e0d2;
+	--color-secondary-500: #cec8b8;
+	--color-secondary-600: #ada694;
+	--color-secondary-700: #7d7668;
+	--color-secondary-800: #4e4940;
+	--color-secondary-900: #272420;
+
+	/* Tertiary — teal accent */
+	--color-tertiary-100: #e8f4f4;
+	--color-tertiary-200: #c2e0e0;
+	--color-tertiary-300: #96c9c9;
+	--color-tertiary-400: #6eabab;
+	--color-tertiary-500: #5e8b8b;
+	--color-tertiary-600: #4a7070;
+	--color-tertiary-700: #375555;
+	--color-tertiary-800: #243a3a;
+	--color-tertiary-900: #122020;
+
+	/* Neutral — warm ink */
+	--color-neutral-050: #ece1d7;
+	--color-neutral-100: #f5f3f0;
+	--color-neutral-200: #d8d3cc;
+	--color-neutral-300: #b0a89e;
+	--color-neutral-400: #7d756c;
+	--color-neutral-500: #524c44;
+	--color-neutral-600: #3a342d;
+	--color-neutral-700: #2a2520;
+	--color-neutral-800: #1f1a14;
+	--color-neutral-900: #100d09;
+
+	/* Semantic aliases (match the Figma `semantic/*` variables) */
+	--color-background: var(--color-primary-400);
+	--color-surface: var(--color-secondary-400);
+	--color-accent: var(--color-tertiary-500);
+	--color-foreground: var(--color-neutral-800);
+	--color-text-inverse: var(--color-primary-100);
+	--color-border: var(--color-neutral-200);
+	--color-border-strong: var(--color-neutral-500);
+
+	/* Friendly aliases — also surfaced by name in theme.json for the editor */
+	--color-cream: var(--color-primary-100);
+	--color-blush: var(--color-primary-200);
+	--color-peach: var(--color-primary-400);
+	--color-sand: var(--color-primary-500);
+	--color-clay: var(--color-primary-700);
+	--color-coffee: var(--color-primary-800);
+	--color-espresso: var(--color-primary-900);
+	--color-oat: var(--color-secondary-400);
+	--color-stone: var(--color-secondary-700);
+	--color-mist: var(--color-tertiary-100);
+	--color-teal: var(--color-tertiary-500);
+	--color-pine: var(--color-tertiary-700);
+	--color-ink: var(--color-neutral-800);
+	--color-slate: var(--color-neutral-400);
 
 	--container-content: var(--wp--style--global--content-size, 42rem);
 	--container-wide: var(--wp--style--global--wide-size, 72rem);

@@ -16,15 +16,15 @@
 @utility prose-dlnorrisbooks {
 	--tw-prose-body: --theme(--color-foreground, initial);
 	--tw-prose-headings: --theme(--color-foreground, initial);
-	--tw-prose-lead: --theme(--color-sage, initial);
-	--tw-prose-links: --theme(--color-gold, initial);
+	--tw-prose-lead: --theme(--color-slate, initial);
+	--tw-prose-links: --theme(--color-accent, initial);
 	--tw-prose-bold: --theme(--color-foreground, initial);
-	--tw-prose-counters: --theme(--color-sage, initial);
-	--tw-prose-bullets: --theme(--color-sage, initial);
+	--tw-prose-counters: --theme(--color-slate, initial);
+	--tw-prose-bullets: --theme(--color-slate, initial);
 	--tw-prose-hr: --theme(--color-ink, initial);
 	--tw-prose-quotes: --theme(--color-foreground, initial);
 	--tw-prose-quote-borders: --theme(--color-ink, initial);
-	--tw-prose-captions: --theme(--color-sage, initial);
+	--tw-prose-captions: --theme(--color-slate, initial);
 	--tw-prose-kbd: --theme(--color-foreground, initial);
 	--tw-prose-kbd-shadows: --theme(--color-foreground, initial);
 	--tw-prose-code: --theme(--color-foreground, initial);
@@ -35,13 +35,13 @@
 	--tw-prose-invert-body: --theme(--color-background, initial);
 	--tw-prose-invert-headings: --theme(--color-background, initial);
 	--tw-prose-invert-lead: --theme(--color-background, initial);
-	--tw-prose-invert-links: --theme(--color-gold, initial);
+	--tw-prose-invert-links: --theme(--color-accent, initial);
 	--tw-prose-invert-bold: --theme(--color-background, initial);
 	--tw-prose-invert-counters: --theme(--color-background, initial);
 	--tw-prose-invert-bullets: --theme(--color-background, initial);
 	--tw-prose-invert-hr: --theme(--color-background, initial);
 	--tw-prose-invert-quotes: --theme(--color-background, initial);
-	--tw-prose-invert-quote-borders: --theme(--color-gold, initial);
+	--tw-prose-invert-quote-borders: --theme(--color-accent, initial);
 	--tw-prose-invert-captions: --theme(--color-background, initial);
 	--tw-prose-invert-kbd: --theme(--color-background, initial);
 	--tw-prose-invert-kbd-shadows: --theme(--color-background, initial);

@@ -38,6 +38,11 @@ add_filter( 'nav_menu_css_class', 'dlnorrisbooks_nav_menu_css_class', 10, 3 );
  * @return array
  */
 function dlnorrisbooks_nav_menu_link_attributes( $atts, $item, $args ) {
+	if ( ! empty( $args->theme_location ) && 'menu-2' === $args->theme_location ) {
+		$atts['class'] = 'site-footer__link';
+		return $atts;
+	}
+
 	if ( empty( $args->theme_location ) || 'menu-1' !== $args->theme_location ) {
 		return $atts;
 	}

@@ -1,0 +1,42 @@
+/**
+ * Site footer — brand left, nav center, copyright right on a pale teal band.
+ *
+ * Mirrors the Figma Footer component (tertiary/100 background, primary/900
+ * text, Newsreader italic wordmark, Inter underlined nav links).
+ *
+ * Intentionally unlayered: Tailwind preflight is unlayered, so rules inside
+ * @layer components lose to `* { padding: 0 }` regardless of specificity.
+ */
+
+.site-footer {
+	@apply w-full border-t border-border bg-mist;
+}
+
+.site-footer__inner {
+	@apply flex w-full flex-col items-center gap-6 px-8 py-12 text-center sm:px-10 lg:flex-row lg:items-center lg:justify-between lg:gap-8 lg:px-16 lg:py-16 lg:text-left xl:px-20 2xl:px-24;
+}
+
+.site-footer__brand {
+	@apply font-editorial text-2xl leading-none font-normal tracking-widest text-espresso uppercase italic no-underline transition-colors duration-200;
+}
+
+.site-footer__brand:hover {
+	@apply text-clay;
+}
+
+.site-footer__menu {
+	@apply m-0 flex list-none flex-wrap items-center justify-center gap-x-8 gap-y-2 p-0;
+}
+
+.site-footer__link {
+	@apply font-sans text-eyebrow font-normal tracking-widest text-espresso uppercase underline underline-offset-4 transition-colors duration-200;
+}
+
+.site-footer__link:hover,
+.site-footer__link:focus-visible {
+	@apply text-clay;
+}
+
+.site-footer__copyright {
+	@apply m-0 font-editorial text-eyebrow font-normal tracking-widest text-espresso uppercase opacity-60;
+}

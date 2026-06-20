@@ -19,7 +19,7 @@
  */
 .page-title,
 .entry-title {
-	@apply mx-auto mb-6 max-w-content font-editorial text-section leading-[1.2] font-normal italic text-muted;
+	@apply mx-auto mb-6 max-w-content px-6 font-editorial text-section leading-[1.2] font-normal italic text-foreground;
 }
 
 /**
@@ -32,7 +32,7 @@
 .entry-footer,
 .post-navigation,
 #comments {
-	@apply max-w-content mx-auto mb-6;
+	@apply mx-auto mb-6 max-w-content px-6;
 }
 
 /**
@@ -47,8 +47,8 @@
  */
 .page-content > *,
 .entry-content > * {
-	/* Content width from the `theme.json` file */
-	@apply max-w-content mx-auto;
+	/* Content width from the `theme.json` file, with a mobile side gutter */
+	@apply mx-auto w-full max-w-content px-6;
 }
 
 .entry-content > .alignwide {
@@ -57,7 +57,8 @@
 }
 
 .entry-content > .alignfull {
-	@apply max-w-none;
+	/* Full-bleed: edge-to-edge with no gutter (blocks supply their own padding) */
+	@apply max-w-none px-0;
 }
 
 .entry-content > .alignleft {

@@ -1,16 +1,19 @@
 /**
  * Site header — logo left, nav center, Subscribe right (desktop).
  *
+ * Colors mirror the Figma Header component: neutral/050 outer shell with a
+ * primary/200 (blush) bar, espresso brand + nav, teal accent on interaction.
+ *
  * Intentionally unlayered: Tailwind preflight is unlayered, so rules inside
  * @layer components lose to `* { padding: 0 }` regardless of specificity.
  */
 
 .site-header {
-	@apply relative w-full border-b border-ink bg-peach;
+	@apply relative w-full border-b border-border bg-neutral-050;
 }
 
 .site-header__inner {
-	@apply relative flex w-full items-center justify-between gap-4 bg-peach px-8 py-5 sm:px-10 lg:px-16 lg:py-6 xl:px-20 2xl:px-24;
+	@apply relative flex w-full items-center justify-between gap-4 bg-blush px-8 py-5 sm:px-10 lg:px-16 lg:py-6 xl:px-20 2xl:px-24;
 }
 
 .site-header__brand {
@@ -34,11 +37,11 @@
 }
 
 .site-branding__link {
-	@apply font-editorial text-xl leading-none font-normal text-muted italic no-underline transition-colors duration-200 lg:text-[1.75rem];
+	@apply font-editorial text-2xl leading-none font-normal tracking-widest text-espresso uppercase italic no-underline transition-colors duration-200;
 }
 
 .site-branding__link:hover {
-	@apply text-sage;
+	@apply text-clay;
 }
 
 .site-header__nav {
@@ -49,22 +52,27 @@
 	@apply relative z-10 flex shrink-0 items-center gap-3;
 }
 
+/* The standalone Subscribe pill is desktop-only; on mobile it lives in the menu. */
+.header-cta {
+	@apply hidden lg:block;
+}
+
 .primary-menu {
 	@apply m-0 flex list-none flex-col gap-1 p-0 lg:flex-row lg:items-center lg:gap-10 xl:gap-14;
 }
 
 .primary-menu__link {
-	@apply inline-block border-b-2 border-transparent pb-1 font-sans text-eyebrow font-normal tracking-[0.25em] text-muted no-underline uppercase transition-colors duration-200;
+	@apply inline-block border-b-2 border-transparent pb-1 font-sans text-eyebrow font-semibold tracking-eyebrow text-espresso no-underline uppercase transition-colors duration-200;
 }
 
 .primary-menu__link:hover,
 .primary-menu__link:focus-visible {
-	@apply text-sage;
+	@apply text-accent;
 }
 
 .primary-menu .current-menu-item > .primary-menu__link,
 .primary-menu .current_page_item > .primary-menu__link {
-	@apply border-muted font-bold text-muted;
+	@apply border-espresso text-espresso;
 }
 
 /* Desktop: nav pinned to true horizontal center of the header bar */
@@ -77,7 +85,7 @@
 /* Mobile: nav drawer below header bar */
 @media (max-width: 1023px) {
 	.site-header__nav {
-		@apply pointer-events-none absolute top-full right-0 left-0 z-50 translate-x-0 translate-y-0 -translate-y-2 border-b border-ink bg-oat opacity-0 transition-all duration-200;
+		@apply pointer-events-none absolute top-full right-0 left-0 z-50 -translate-y-2 border-b border-border bg-neutral-050 opacity-0 transition-all duration-200;
 	}
 
 	.site-header__nav.is-open {
@@ -93,20 +101,20 @@
 	}
 
 	.primary-menu > .menu-item {
-		@apply border-b border-ink/60 last:border-b-0;
+		@apply border-b border-border last:border-b-0;
 	}
 }
 
 .menu-toggle {
-	@apply relative inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-ink bg-transparent text-muted transition-colors duration-200 lg:hidden;
+	@apply relative inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-espresso bg-transparent text-espresso transition-colors duration-200 lg:hidden;
 }
 
 .menu-toggle:hover {
-	@apply bg-oat;
+	@apply bg-blush;
 }
 
 .menu-toggle:focus-visible {
-	@apply bg-sage-accent/20 outline-2 outline-offset-2 outline-sage-accent;
+	@apply bg-accent/15 outline-2 outline-offset-2 outline-accent;
 }
 
 .menu-toggle__icon {
@@ -126,7 +134,7 @@
 }
 
 .menu-toggle[aria-expanded="true"] {
-	@apply bg-oat;
+	@apply bg-blush;
 }
 
 body.mobile-menu-open {

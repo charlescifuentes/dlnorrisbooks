@@ -9,3 +9,6 @@
 
 # Ignore minified JavaScript:
 *.min.js
+
+# Ignore compiled block output (generated from `src/blocks`):
+theme/blocks/

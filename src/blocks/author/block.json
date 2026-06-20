@@ -1,0 +1,36 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "dlnorrisbooks/author",
+	"version": "0.1.0",
+	"title": "Author",
+	"category": "dlnorrisbooks",
+	"icon": "admin-users",
+	"description": "Author introduction — photo with a decorative accent beside an editorial bio and a link.",
+	"keywords": [ "author", "about", "bio", "intro" ],
+	"textdomain": "dlnorrisbooks",
+	"attributes": {
+		"align": { "type": "string", "default": "full" },
+		"eyebrow": { "type": "string", "default": "The Author" },
+		"heading": {
+			"type": "string",
+			"default": "<strong>D. L. Norris</strong> writes from a small cabin in the Pacific Northwest, surrounded by evergreens and damp earth."
+		},
+		"bio": {
+			"type": "string",
+			"default": "Winner of the Archival Press Essay Prize and frequent contributor to The Observer, Norris's work seeks to slow the pulse of the modern reader, returning them to a state of quiet contemplation."
+		},
+		"linkText": { "type": "string", "default": "Read Full Biography" },
+		"linkUrl": { "type": "string", "default": "" },
+		"imageId": { "type": "number", "default": 0 },
+		"imageUrl": { "type": "string", "default": "" },
+		"imageAlt": { "type": "string", "default": "" }
+	},
+	"supports": {
+		"align": [ "full" ],
+		"anchor": true,
+		"html": false
+	},
+	"editorScript": "file:./index.js",
+	"render": "file:./render.php"
+}

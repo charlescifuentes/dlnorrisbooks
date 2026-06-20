@@ -38,7 +38,7 @@ if ( ! defined( 'DLNORRISBOOKS_TYPOGRAPHY_CLASSES' ) ) {
 	 */
 	define(
 		'DLNORRISBOOKS_TYPOGRAPHY_CLASSES',
-		'prose prose-dlnorrisbooks max-w-none prose-a:text-gold'
+		'prose prose-dlnorrisbooks max-w-none prose-a:text-accent'
 	);
 }
 
@@ -185,6 +185,7 @@ function dlnorrisbooks_enqueue_block_editor_script() {
 			true
 		);
 		wp_add_inline_script( 'dlnorrisbooks-editor', "tailwindTypographyClasses = '" . esc_attr( DLNORRISBOOKS_TYPOGRAPHY_CLASSES ) . "'.split(' ');", 'before' );
+		wp_add_inline_script( 'dlnorrisbooks-editor', 'window.dlnorrisbooksTheme = { uri: "' . esc_url( get_template_directory_uri() ) . '" };', 'before' );
 	}
 }
 add_action( 'enqueue_block_assets', 'dlnorrisbooks_enqueue_block_editor_script' );
@@ -219,6 +220,58 @@ function dlnorrisbooks_modify_heading_levels( $args, $block_type ) {
 	return $args;
 }
 add_filter( 'register_block_type_args', 'dlnorrisbooks_modify_heading_levels', 10, 2 );
+
+/**
+ * Register a custom block category for the theme's blocks.
+ *
+ * @param array $categories Existing block categories.
+ * @return array
+ */
+function dlnorrisbooks_block_categories( $categories ) {
+	return array_merge(
+		array(
+			array(
+				'slug'  => 'dlnorrisbooks',
+				'title' => __( 'D. L. Norris', 'dlnorrisbooks' ),
+				'icon'  => null,
+			),
+		),
+		$categories
+	);
+}
+add_filter( 'block_categories_all', 'dlnorrisbooks_block_categories' );
+
+/**
+ * Register all built theme blocks.
+ *
+ * Each block lives in its own folder under `/blocks`, built from `/src/blocks`
+ * by `@wordpress/scripts`. Any folder containing a `block.json` is registered.
+ */
+function dlnorrisbooks_register_blocks() {
+	$blocks_dir = get_template_directory() . '/blocks';
+
+	if ( ! is_dir( $blocks_dir ) ) {
+		return;
+	}
+
+	$block_folders = glob( $blocks_dir . '/*', GLOB_ONLYDIR );
+
+	if ( empty( $block_folders ) ) {
+		return;
+	}
+
+	foreach ( $block_folders as $block_folder ) {
+		if ( file_exists( $block_folder . '/block.json' ) ) {
+			register_block_type( $block_folder );
+		}
+	}
+}
+add_action( 'init', 'dlnorrisbooks_register_blocks' );
+
+/**
+ * Custom post types.
+ */
+require get_template_directory() . '/inc/post-types.php';
 
 /**
  * Custom template tags for this theme.

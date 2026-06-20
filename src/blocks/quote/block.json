@@ -1,0 +1,27 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "dlnorrisbooks/quote",
+	"version": "0.1.0",
+	"title": "Pull Quote",
+	"category": "dlnorrisbooks",
+	"icon": "format-quote",
+	"description": "A large centered pull quote with a decorative quote mark and citation, on a light band.",
+	"keywords": [ "quote", "pullquote", "testimonial" ],
+	"textdomain": "dlnorrisbooks",
+	"attributes": {
+		"align": { "type": "string", "default": "full" },
+		"quote": {
+			"type": "string",
+			"default": "We find our true voices only when the world stops shouting. It is in the heavy, expectant silence between breaths that our stories finally begin to take shape."
+		},
+		"citation": { "type": "string", "default": "The Paris Review: 2022" }
+	},
+	"supports": {
+		"align": [ "full" ],
+		"anchor": true,
+		"html": false
+	},
+	"editorScript": "file:./index.js",
+	"render": "file:./render.php"
+}

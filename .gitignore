@@ -5,6 +5,9 @@
 # Ignore generated JavaScript files:
 *.min.js
 
+# Ignore compiled block output (built from `src/blocks` by @wordpress/scripts):
+/theme/blocks
+
 # Ignore generated CSS files:
 style.css
 style-editor.css

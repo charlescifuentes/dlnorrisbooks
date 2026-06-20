@@ -7,9 +7,9 @@ body {
 }
 
 a {
-	@apply text-gold transition-colors duration-200;
+	@apply text-accent transition-colors duration-200;
 }
 
 a:not(.btn-pill):hover {
-	@apply text-muted;
+	@apply text-pine;
 }

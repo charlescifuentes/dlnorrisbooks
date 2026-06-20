@@ -4,30 +4,30 @@
 
 @layer components {
 	.eyebrow {
-		@apply font-sans text-eyebrow font-semibold tracking-eyebrow text-sage uppercase;
+		@apply font-sans text-eyebrow font-semibold tracking-eyebrow text-coffee uppercase;
 	}
 
 	.display-large {
-		@apply font-editorial text-display leading-[1.1] font-normal italic text-muted;
+		@apply font-editorial text-display leading-[1.1] font-normal italic text-foreground;
 	}
 
 	.section-title {
-		@apply font-editorial text-section leading-[1.2] font-normal italic text-muted;
+		@apply font-editorial text-section leading-[1.2] font-normal italic text-foreground;
 	}
 
 	.card-title {
-		@apply font-editorial text-card leading-[1.2] font-normal italic text-muted;
+		@apply font-editorial text-card leading-[1.2] font-normal italic text-foreground;
 	}
 
 	.pull-quote {
-		@apply font-editorial text-pull-quote leading-[1.4] font-normal italic text-muted;
+		@apply font-editorial text-pull-quote leading-[1.4] font-normal italic text-foreground;
 	}
 
 	.attribution {
-		@apply font-sans text-eyebrow font-semibold tracking-eyebrow text-sage uppercase;
+		@apply font-sans text-eyebrow font-semibold tracking-eyebrow text-coffee uppercase;
 	}
 
 	.body-reading {
-		@apply font-editorial text-body leading-[1.6] text-muted;
+		@apply font-editorial text-body leading-[1.6] text-foreground;
 	}
 }

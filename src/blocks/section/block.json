@@ -1,0 +1,25 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "dlnorrisbooks/section",
+	"version": "0.1.0",
+	"title": "Section Band",
+	"category": "dlnorrisbooks",
+	"icon": "align-center",
+	"description": "A full-width sectional band (Peach or Oat) that wraps inner content.",
+	"keywords": [ "section", "band", "container" ],
+	"textdomain": "dlnorrisbooks",
+	"attributes": {
+		"tone": {
+			"type": "string",
+			"default": "peach"
+		}
+	},
+	"supports": {
+		"align": [ "wide", "full" ],
+		"anchor": true,
+		"html": false
+	},
+	"editorScript": "file:./index.js",
+	"render": "file:./render.php"
+}

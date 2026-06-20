@@ -4,7 +4,7 @@
 
 @layer components {
 	.input-field {
-		@apply w-full rounded-full border border-ink bg-transparent px-5 py-3 font-editorial text-body text-muted transition-colors duration-200 placeholder:text-sage;
+		@apply w-full rounded-full border border-border-strong bg-transparent px-5 py-3 font-editorial text-body text-foreground transition-colors duration-200 placeholder:text-slate;
 	}
 
 	.input-field:hover {
@@ -12,10 +12,10 @@
 	}
 
 	.input-field:focus {
-		@apply bg-sage-accent/10 outline-2 outline-offset-2 outline-sage-accent;
+		@apply bg-accent/10 outline-2 outline-offset-2 outline-accent;
 	}
 
 	.input-label {
-		@apply mb-2 block font-sans text-eyebrow font-semibold tracking-eyebrow text-muted uppercase;
+		@apply mb-2 block font-sans text-eyebrow font-semibold tracking-eyebrow text-coffee uppercase;
 	}
 }

@@ -1,0 +1,67 @@
+/**
+ * Newsletter Band — centered email signup on a dark band. The form is injected
+ * via shortcode; the rules below style both the fallback form and a typical
+ * subscription form (e.g. Jetpack) to match the design.
+ *
+ * Mirrors the Figma Newsletter band (node 38:720).
+ */
+
+.newsletter {
+	@apply w-full bg-neutral-800;
+}
+
+.newsletter__inner {
+	@apply mx-auto flex max-w-2xl flex-col items-center gap-5 px-6 py-20 text-center sm:px-10 lg:py-28;
+}
+
+.newsletter__eyebrow {
+	@apply font-sans text-eyebrow font-semibold tracking-eyebrow text-clay uppercase;
+}
+
+.newsletter__heading {
+	@apply m-0 font-editorial text-card leading-tight font-normal text-cream italic;
+}
+
+.newsletter__description {
+	@apply m-0 max-w-xl font-editorial text-body leading-snug text-sand;
+}
+
+.newsletter__form {
+	@apply mt-4 w-full;
+}
+
+/* Layout for the fallback form and common subscription form markup. */
+.newsletter__fallback,
+.newsletter__form form {
+	@apply flex flex-wrap items-center justify-center gap-x-6 gap-y-4;
+}
+
+/* Email input — underlined, transparent, on the dark band. */
+.newsletter__input,
+.newsletter__form input[type="email"],
+.newsletter__form input[type="text"],
+.newsletter__form input:not([type]) {
+	@apply min-w-0 max-w-xs flex-1 border-0 border-b border-cream/40 bg-transparent px-1 py-2 font-sans text-base text-cream transition-colors duration-200 placeholder:text-cream/50;
+}
+
+.newsletter__input:focus,
+.newsletter__form input[type="email"]:focus,
+.newsletter__form input[type="text"]:focus,
+.newsletter__form input:not([type]):focus {
+	@apply border-cream outline-none;
+}
+
+/* Submit — light outlined pill. */
+.newsletter__submit,
+.newsletter__form button,
+.newsletter__form input[type="submit"],
+.newsletter__form button[type="submit"] {
+	@apply inline-flex shrink-0 cursor-pointer items-center justify-center rounded-full border border-cream/50 bg-transparent px-6 py-2.5 font-sans text-eyebrow font-semibold tracking-eyebrow text-cream uppercase transition-colors duration-200;
+}
+
+.newsletter__submit:hover,
+.newsletter__form button:hover,
+.newsletter__form input[type="submit"]:hover,
+.newsletter__form button[type="submit"]:hover {
+	@apply border-cream bg-cream/10;
+}

@@ -1,0 +1,81 @@
+/**
+ * Recent Stories — latest blog posts as editorial cards with a cream caption
+ * box overlapping the image. Mirrors the Figma SectionPosts (node 38:556).
+ */
+
+.stories {
+	@apply w-full bg-secondary-100;
+}
+
+.stories__inner {
+	@apply mx-auto w-full max-w-wide px-6 py-20 sm:px-10 lg:px-16 lg:py-28 xl:px-20;
+}
+
+.stories__header {
+	@apply flex flex-wrap items-end justify-between gap-x-6 gap-y-3 border-b border-foreground/20 pb-4;
+}
+
+.stories__heading {
+	@apply flex flex-col items-start gap-2;
+}
+
+.stories__eyebrow {
+	@apply bg-cream px-2 py-1 font-sans text-eyebrow font-semibold tracking-eyebrow text-coffee uppercase;
+}
+
+.stories__title {
+	@apply m-0 font-editorial text-card leading-tight font-normal text-foreground italic;
+}
+
+.stories__archive {
+	@apply inline-flex items-center gap-2 font-sans text-eyebrow font-semibold tracking-[0.08em] text-coffee uppercase no-underline transition-colors duration-200;
+}
+
+.stories__archive:hover {
+	@apply text-espresso;
+}
+
+.stories__archive-icon {
+	@apply shrink-0;
+}
+
+.stories__grid {
+	@apply mt-12 grid list-none grid-cols-1 gap-8 p-0 md:grid-cols-2 lg:mt-14 lg:gap-x-10 lg:gap-y-12;
+}
+
+.stories__item {
+	@apply m-0;
+}
+
+/* Card — blush panel, image on top, cream caption box overlapping its base. */
+.story-card {
+	@apply relative block bg-blush p-2 no-underline;
+}
+
+.story-card__media {
+	@apply relative aspect-16/10 w-full overflow-hidden bg-secondary-800;
+}
+
+.story-card__image {
+	@apply absolute inset-0 size-full object-cover transition-transform duration-300;
+}
+
+.story-card:hover .story-card__image {
+	@apply scale-105;
+}
+
+.story-card__body {
+	@apply relative z-10 -mt-10 mr-[8%] bg-cream px-4 pt-4 pb-8;
+}
+
+.story-card__title {
+	@apply m-0 font-editorial text-2xl leading-snug font-normal text-foreground italic;
+}
+
+.story-card__excerpt {
+	@apply mt-2 mb-0 font-sans text-[0.9375rem] leading-normal text-neutral-600;
+}
+
+.stories__empty {
+	@apply mt-12 text-center font-editorial text-body text-stone italic;
+}

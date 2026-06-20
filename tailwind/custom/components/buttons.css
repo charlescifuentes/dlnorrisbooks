@@ -5,13 +5,26 @@
  */
 
 .btn-pill {
-	@apply inline-flex items-center justify-center rounded-full border border-ink bg-transparent px-6 py-2.5 font-sans text-eyebrow font-semibold tracking-eyebrow text-muted no-underline uppercase transition-colors duration-200;
+	@apply inline-flex items-center justify-center rounded-full border border-espresso bg-transparent px-6 py-2.5 font-sans text-eyebrow font-semibold tracking-eyebrow text-espresso no-underline uppercase transition-colors duration-200;
 }
 
 .btn-pill:hover {
-	@apply bg-oat text-muted no-underline;
+	@apply bg-espresso text-cream no-underline;
 }
 
 .btn-pill:focus-visible {
-	@apply bg-sage-accent/20 text-muted no-underline outline-2 outline-offset-2 outline-sage-accent;
+	@apply bg-accent/15 text-espresso no-underline outline-2 outline-offset-2 outline-accent;
+}
+
+/* Filled (sand) variant — used for primary section CTAs. */
+.btn-pill--solid {
+	@apply border-sand bg-sand text-espresso;
+}
+
+.btn-pill--solid:hover {
+	@apply border-primary-600 bg-primary-600 text-espresso no-underline;
+}
+
+.btn-pill--solid:focus-visible {
+	@apply bg-sand text-espresso outline-2 outline-offset-2 outline-espresso;
 }

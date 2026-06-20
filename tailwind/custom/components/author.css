@@ -1,0 +1,74 @@
+/**
+ * Author — photo with a teal accent beside an editorial bio, on a blush band
+ * with a wavy top. Mirrors the Figma Author section (nodes 38:572 / 41:267).
+ *
+ * Unlayered so Tailwind preflight does not flatten the positioning.
+ */
+
+.author {
+	@apply relative z-10 w-full bg-blush;
+}
+
+.author__wave {
+	@apply pointer-events-none absolute right-0 left-0 h-12 bg-blush;
+	-webkit-mask: url("assets/images/wave-divider.svg") center / 100% 100%
+		no-repeat;
+	mask: url("assets/images/wave-divider.svg") center / 100% 100% no-repeat;
+}
+
+.author__wave--top {
+	@apply bottom-full;
+}
+
+.author__inner {
+	@apply mx-auto grid max-w-wide grid-cols-1 items-center gap-12 px-6 py-20 sm:px-10 lg:grid-cols-[minmax(0,340px)_1fr] lg:gap-16 lg:px-16 lg:py-28 xl:px-20;
+}
+
+.author__media {
+	@apply relative mx-auto w-full max-w-xs lg:mx-0;
+}
+
+.author__decor {
+	@apply absolute -top-5 -left-5 z-0 h-24 w-24 rounded-full bg-[#bcebeb] opacity-60 mix-blend-multiply;
+}
+
+.author__frame {
+	@apply relative z-10 border border-espresso bg-[#fff8f4];
+}
+
+.author__image {
+	@apply block aspect-3/4 w-full object-cover;
+	filter: saturate(0.9);
+}
+
+.author__content {
+	@apply flex min-w-0 flex-col items-start gap-6;
+}
+
+.author__eyebrow {
+	@apply font-sans text-eyebrow font-bold tracking-eyebrow text-espresso uppercase;
+}
+
+.author__heading {
+	@apply m-0 font-editorial text-card leading-tight font-normal text-espresso italic lg:text-section;
+}
+
+.author__heading strong {
+	@apply font-normal text-clay;
+}
+
+.author__bio {
+	@apply m-0 font-editorial text-body leading-snug text-espresso;
+}
+
+.author__link {
+	@apply inline-flex items-center gap-2 border-b border-espresso pb-1 font-sans text-eyebrow font-semibold tracking-[0.08em] text-foreground uppercase no-underline transition-colors duration-200;
+}
+
+.author__link:hover {
+	@apply text-clay;
+}
+
+.author__link-icon {
+	@apply shrink-0;
+}

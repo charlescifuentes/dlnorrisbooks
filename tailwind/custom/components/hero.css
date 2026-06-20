@@ -1,0 +1,51 @@
+/**
+ * Homepage hero — two-column editorial intro: text beside a full-height author
+ * portrait, on a cream (primary/100) full-bleed band.
+ * Based on the Figma Hero (node 6:1118).
+ *
+ * Unlayered so Tailwind preflight does not flatten the padding/positioning.
+ */
+
+.hero {
+	@apply relative w-full overflow-hidden bg-cream;
+}
+
+.hero__inner {
+	@apply mx-auto grid w-full max-w-wide grid-cols-1 items-center gap-10 px-6 py-16 sm:px-10 lg:grid-cols-2 lg:items-stretch lg:gap-8 lg:px-16 lg:py-0 xl:px-20;
+}
+
+@media (min-width: 1024px) {
+	.hero__inner {
+		min-height: 38rem;
+	}
+}
+
+.hero__content {
+	@apply relative z-10 flex min-w-0 max-w-xl flex-col items-start gap-6 lg:justify-center lg:py-20;
+}
+
+.hero__eyebrow {
+	@apply m-0 w-full font-sans text-eyebrow font-semibold tracking-eyebrow text-coffee uppercase;
+}
+
+.hero__heading {
+	@apply m-0 w-full font-editorial font-normal text-foreground uppercase;
+	font-size: clamp(3.25rem, 7vw, 6.25rem);
+	line-height: 0.92;
+}
+
+.hero__subtitle {
+	@apply m-0 w-full max-w-md font-editorial text-xl leading-relaxed text-secondary-800 italic;
+}
+
+.hero__cta {
+	@apply mt-2;
+}
+
+.hero__media {
+	@apply relative mx-auto flex w-full min-w-0 max-w-sm items-center justify-center lg:mx-0 lg:max-w-none;
+}
+
+.hero__portrait {
+	@apply relative z-10 mx-auto block h-auto w-full max-w-104 object-contain lg:mx-0 lg:h-full lg:max-w-none lg:object-cover;
+}

@@ -1,0 +1,43 @@
+/**
+ * Pull Quote — large centered editorial quote with a tan quote mark and an
+ * uppercase citation, on a light band. Mirrors the Figma Quote (node 38:465).
+ */
+
+.quote {
+	@apply w-full bg-secondary-100;
+}
+
+.quote__inner {
+	@apply mx-auto flex max-w-5xl flex-col items-center gap-8 px-6 py-24 text-center sm:px-10 lg:gap-10 lg:py-32;
+}
+
+.quote__mark {
+	@apply block text-primary-600;
+}
+
+.quote__mark svg {
+	@apply block h-auto w-12;
+}
+
+.quote__text {
+	@apply m-0 font-editorial font-normal text-espresso italic;
+	font-size: clamp(1.75rem, 4.5vw, 3rem);
+	line-height: 1.18;
+	letter-spacing: -0.02em;
+}
+
+.quote__text::before {
+	content: "\201C";
+}
+
+.quote__text::after {
+	content: "\201D";
+}
+
+.quote__citation {
+	@apply font-sans text-eyebrow font-normal tracking-eyebrow text-slate uppercase not-italic;
+}
+
+.quote__citation::before {
+	content: "— ";
+}

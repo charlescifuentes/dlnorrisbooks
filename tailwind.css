@@ -16,6 +16,15 @@
 @import "./tailwind/custom/file-header.css";
 
 /**
+ * Ensure utility classes used in custom block sources are always generated for
+ * both the front-end and editor builds (Tailwind v4 auto-detects most sources,
+ * but block `render.php` output and `edit.js` markup are scanned explicitly
+ * here as a safety net).
+ */
+@source "./theme/blocks";
+@source "./src/blocks";
+
+/**
  * Add Tailwind’s default theme and your custom theme.
  */
 @import "tailwindcss/theme";
