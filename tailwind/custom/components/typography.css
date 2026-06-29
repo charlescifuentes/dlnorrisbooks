@@ -4,30 +4,57 @@
 
 @layer components {
 	.eyebrow {
-		@apply font-sans text-eyebrow font-semibold tracking-eyebrow text-coffee uppercase;
+		@apply text-eyebrow tracking-eyebrow text-coffee font-sans font-semibold uppercase;
 	}
 
 	.display-large {
-		@apply font-editorial text-display leading-[1.1] font-normal italic text-foreground;
+		@apply font-editorial text-display text-foreground leading-[1.1] font-normal italic;
 	}
 
 	.section-title {
-		@apply font-editorial text-section leading-[1.2] font-normal italic text-foreground;
+		@apply font-editorial text-section text-foreground leading-[1.2] font-normal italic;
 	}
 
 	.card-title {
-		@apply font-editorial text-card leading-[1.2] font-normal italic text-foreground;
+		@apply font-editorial text-card text-foreground leading-[1.2] font-normal italic;
 	}
 
 	.pull-quote {
-		@apply font-editorial text-pull-quote leading-[1.4] font-normal italic text-foreground;
+		@apply font-editorial text-pull-quote text-foreground leading-[1.4] font-normal italic;
 	}
 
 	.attribution {
-		@apply font-sans text-eyebrow font-semibold tracking-eyebrow text-coffee uppercase;
+		@apply text-eyebrow tracking-eyebrow text-coffee font-sans font-semibold uppercase;
 	}
 
 	.body-reading {
-		@apply font-editorial text-body leading-[1.6] text-foreground;
+		@apply font-editorial text-body text-foreground leading-[1.6];
 	}
+}
+
+/**
+ * Editorial drop cap.
+ *
+ * Applied when the core Paragraph block's "Drop cap" option is enabled (which
+ * adds the `.has-drop-cap` class). Styles the opening initial as a large italic
+ * Newsreader letter sinking into the first lines of body copy — matching the
+ * About-page biography intro in the Figma design.
+ *
+ * Note: the core toggle only enlarges the FIRST letter (`::first-letter`, i.e.
+ * just "D"). To reproduce the design's full "D.L" initials, wrap them in a
+ * `<span class="dropcap">D.L</span>` at the start of the paragraph instead
+ * (styled identically below).
+ *
+ * Unlayered so it reliably overrides Tailwind Typography's paragraph rules.
+ */
+.prose-dlnorrisbooks p.has-drop-cap::first-letter,
+.prose-dlnorrisbooks .dropcap {
+	float: left;
+	margin: 0.04em 0.08em 0 0;
+	font-family: var(--font-editorial);
+	font-weight: 400;
+	font-style: italic;
+	font-size: 3.8em;
+	line-height: 0.78;
+	color: var(--color-espresso);
 }

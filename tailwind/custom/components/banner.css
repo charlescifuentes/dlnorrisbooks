@@ -1,0 +1,45 @@
+/**
+ * Page Banner — a full-bleed image banner with a centered cream label card.
+ * Reusable page hero used across the site (About, Books, Blog, …).
+ * Based on the Figma "Meet the Author" banner (node 41:535).
+ *
+ * Unlayered so Tailwind preflight does not flatten the positioning/padding.
+ */
+
+.banner {
+	@apply bg-espresso relative w-full overflow-hidden;
+	min-height: clamp(20rem, 54vw, 48.25rem);
+}
+
+.banner__media {
+	@apply absolute inset-0;
+}
+
+.banner__image {
+	@apply h-full w-full object-cover;
+	/* object-position is supplied inline from the block's focal point. */
+}
+
+.banner__overlay {
+	@apply absolute inset-0;
+	background-image: linear-gradient(
+		to bottom,
+		rgba(0, 0, 0, 0.2),
+		rgba(23, 23, 23, 0.2)
+	);
+}
+
+.banner__inner {
+	@apply relative z-10 flex w-full items-center justify-center px-6;
+	min-height: clamp(20rem, 54vw, 48.25rem);
+}
+
+.banner__card {
+	@apply bg-cream inline-flex items-center justify-center px-6 py-2 text-center;
+}
+
+.banner__label {
+	@apply font-editorial text-espresso m-0 font-normal italic;
+	font-size: clamp(1.75rem, 4vw, 3rem);
+	line-height: 1.2;
+}
