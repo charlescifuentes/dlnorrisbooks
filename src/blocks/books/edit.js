@@ -8,11 +8,16 @@
 
 import { __ } from '@wordpress/i18n';
 import { useBlockProps, InspectorControls } from '@wordpress/block-editor';
-import { PanelBody, TextControl, RangeControl } from '@wordpress/components';
+import {
+	PanelBody,
+	TextControl,
+	RangeControl,
+	ToggleControl,
+} from '@wordpress/components';
 import ServerSideRender from '@wordpress/server-side-render';
 
 export default function Edit({ attributes, setAttributes }) {
-	const { eyebrow, title, count, ctaText, ctaUrl } = attributes;
+	const { eyebrow, title, count, showWaves, ctaText, ctaUrl } = attributes;
 	const blockProps = useBlockProps();
 
 	return (
@@ -43,6 +48,20 @@ export default function Edit({ attributes, setAttributes }) {
 						max={12}
 						__nextHasNoMarginBottom
 						__next40pxDefaultSize
+					/>
+				</PanelBody>
+				<PanelBody title={__('Appearance', 'dlnorrisbooks')}>
+					<ToggleControl
+						label={__('Wavy edges', 'dlnorrisbooks')}
+						help={__(
+							'Curved top and bottom dividers that blend the band into neighbouring sections. Turn off for a flat band on standalone pages.',
+							'dlnorrisbooks'
+						)}
+						checked={showWaves}
+						onChange={(value) =>
+							setAttributes({ showWaves: value })
+						}
+						__nextHasNoMarginBottom
 					/>
 				</PanelBody>
 				<PanelBody title={__('Call to action', 'dlnorrisbooks')}>

@@ -18,6 +18,9 @@ $dlnorrisbooks_count    = isset( $attributes['count'] ) ? absint( $attributes['c
 $dlnorrisbooks_cta_text = isset( $attributes['ctaText'] ) ? $attributes['ctaText'] : '';
 $dlnorrisbooks_cta_url  = ! empty( $attributes['ctaUrl'] ) ? $attributes['ctaUrl'] : get_post_type_archive_link( 'book' );
 
+// Wavy top/bottom dividers — on by default; toggled off for standalone pages.
+$dlnorrisbooks_has_waves = ! isset( $attributes['showWaves'] ) || $attributes['showWaves'];
+
 $dlnorrisbooks_placeholder = get_template_directory_uri() . '/assets/images/book-placeholder.webp';
 
 $dlnorrisbooks_query = new WP_Query(
@@ -32,10 +35,13 @@ $dlnorrisbooks_query = new WP_Query(
 	)
 );
 
-$dlnorrisbooks_wrapper = get_block_wrapper_attributes( array( 'class' => 'books not-prose' ) );
+$dlnorrisbooks_class   = 'books not-prose' . ( $dlnorrisbooks_has_waves ? '' : ' books--flat' );
+$dlnorrisbooks_wrapper = get_block_wrapper_attributes( array( 'class' => $dlnorrisbooks_class ) );
 ?>
 <section <?php echo $dlnorrisbooks_wrapper; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
-	<span class="books__wave books__wave--top" aria-hidden="true"></span>
+	<?php if ( $dlnorrisbooks_has_waves ) : ?>
+		<span class="books__wave books__wave--top" aria-hidden="true"></span>
+	<?php endif; ?>
 
 	<div class="books__inner">
 		<header class="books__header">
@@ -101,5 +107,7 @@ $dlnorrisbooks_wrapper = get_block_wrapper_attributes( array( 'class' => 'books 
 		<?php endif; ?>
 	</div>
 
-	<span class="books__wave books__wave--bottom" aria-hidden="true"></span>
+	<?php if ( $dlnorrisbooks_has_waves ) : ?>
+		<span class="books__wave books__wave--bottom" aria-hidden="true"></span>
+	<?php endif; ?>
 </section>
