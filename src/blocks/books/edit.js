@@ -17,7 +17,8 @@ import {
 import ServerSideRender from '@wordpress/server-side-render';
 
 export default function Edit({ attributes, setAttributes }) {
-	const { eyebrow, title, count, showWaves, ctaText, ctaUrl } = attributes;
+	const { eyebrow, title, count, showWaves, showCta, ctaText, ctaUrl } =
+		attributes;
 	const blockProps = useBlockProps();
 
 	return (
@@ -65,20 +66,40 @@ export default function Edit({ attributes, setAttributes }) {
 					/>
 				</PanelBody>
 				<PanelBody title={__('Call to action', 'dlnorrisbooks')}>
-					<TextControl
-						label={__('Button text', 'dlnorrisbooks')}
-						value={ctaText}
-						onChange={(value) => setAttributes({ ctaText: value })}
+					<ToggleControl
+						label={__('Show button', 'dlnorrisbooks')}
+						help={__(
+							'The "View All Books" button. Turn off on the Books page itself, where the full collection is already shown.',
+							'dlnorrisbooks'
+						)}
+						checked={showCta}
+						onChange={(value) =>
+							setAttributes({ showCta: value })
+						}
 						__nextHasNoMarginBottom
-						__next40pxDefaultSize
 					/>
-					<TextControl
-						label={__('Button URL', 'dlnorrisbooks')}
-						value={ctaUrl}
-						onChange={(value) => setAttributes({ ctaUrl: value })}
-						__nextHasNoMarginBottom
-						__next40pxDefaultSize
-					/>
+					{showCta && (
+						<>
+							<TextControl
+								label={__('Button text', 'dlnorrisbooks')}
+								value={ctaText}
+								onChange={(value) =>
+									setAttributes({ ctaText: value })
+								}
+								__nextHasNoMarginBottom
+								__next40pxDefaultSize
+							/>
+							<TextControl
+								label={__('Button URL', 'dlnorrisbooks')}
+								value={ctaUrl}
+								onChange={(value) =>
+									setAttributes({ ctaUrl: value })
+								}
+								__nextHasNoMarginBottom
+								__next40pxDefaultSize
+							/>
+						</>
+					)}
 				</PanelBody>
 			</InspectorControls>
 

@@ -21,6 +21,9 @@ $dlnorrisbooks_cta_url  = ! empty( $attributes['ctaUrl'] ) ? $attributes['ctaUrl
 // Wavy top/bottom dividers — on by default; toggled off for standalone pages.
 $dlnorrisbooks_has_waves = ! isset( $attributes['showWaves'] ) || $attributes['showWaves'];
 
+// "View All Books" button — on by default; toggled off on the Books page itself.
+$dlnorrisbooks_has_cta = ! isset( $attributes['showCta'] ) || $attributes['showCta'];
+
 $dlnorrisbooks_placeholder = get_template_directory_uri() . '/assets/images/book-placeholder.webp';
 
 $dlnorrisbooks_query = new WP_Query(
@@ -95,7 +98,7 @@ $dlnorrisbooks_wrapper = get_block_wrapper_attributes( array( 'class' => $dlnorr
 			<p class="books__empty"><?php esc_html_e( 'No books published yet.', 'dlnorrisbooks' ); ?></p>
 		<?php endif; ?>
 
-		<?php if ( '' !== $dlnorrisbooks_cta_text && $dlnorrisbooks_cta_url ) : ?>
+		<?php if ( $dlnorrisbooks_has_cta && '' !== $dlnorrisbooks_cta_text && $dlnorrisbooks_cta_url ) : ?>
 			<div class="books__cta-wrap">
 				<a class="btn-pill btn-pill--solid books__cta" href="<?php echo esc_url( $dlnorrisbooks_cta_url ); ?>">
 					<?php echo esc_html( $dlnorrisbooks_cta_text ); ?>

@@ -15,6 +15,7 @@
 		"title": { "type": "string", "default": "The Books" },
 		"count": { "type": "number", "default": 5 },
 		"showWaves": { "type": "boolean", "default": true },
+		"showCta": { "type": "boolean", "default": true },
 		"ctaText": { "type": "string", "default": "View All Books" },
 		"ctaUrl": { "type": "string", "default": "" }
 	},
