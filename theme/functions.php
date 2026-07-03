@@ -274,6 +274,11 @@ add_action( 'init', 'dlnorrisbooks_register_blocks' );
 require get_template_directory() . '/inc/post-types.php';
 
 /**
+ * Advanced Custom Fields field groups (no-ops when ACF is inactive).
+ */
+require get_template_directory() . '/inc/acf-fields.php';
+
+/**
  * Custom template tags for this theme.
  */
 require get_template_directory() . '/inc/template-tags.php';

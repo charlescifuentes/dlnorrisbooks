@@ -1,0 +1,59 @@
+/**
+ * Single Book — two-column hero (cover panel + teal details panel) and the
+ * book body. Mirrors the Figma single-book template (node 41:1154).
+ *
+ * Unlayered so Tailwind preflight does not flatten the panel borders and
+ * positioning.
+ */
+
+.book-hero {
+	@apply w-full border-b border-black;
+}
+
+.book-hero__grid {
+	@apply grid w-full grid-cols-1 lg:grid-cols-2;
+}
+
+/* Left: cover on a warm off-white panel, divided from the details by a rule. */
+.book-hero__cover-panel {
+	@apply flex items-center justify-center border-b border-black bg-[#f7f3f1] px-8 py-14 lg:border-r lg:border-b-0 lg:px-16 lg:py-16;
+	min-height: clamp(24rem, 44vw, 40rem);
+}
+
+.book-hero__cover {
+	@apply relative w-full max-w-85 border border-[#cfc5bc] shadow-[0_25px_50px_-12px_rgba(0,0,0,0.2)];
+}
+
+.book-hero__cover-img {
+	@apply block h-auto w-full;
+}
+
+/* Right: title on the teal details panel. */
+.book-hero__details {
+	@apply bg-tertiary-300 flex flex-col items-start justify-center gap-4 px-8 py-16 lg:px-16;
+	min-height: clamp(24rem, 44vw, 40rem);
+}
+
+.book-hero__title {
+	@apply font-editorial m-0 font-normal text-black not-italic;
+	font-size: clamp(2rem, 4vw, 3rem);
+	line-height: 1.15;
+	letter-spacing: -0.02em;
+}
+
+.book-hero__subtitle {
+	@apply font-editorial m-0 font-normal text-black/80;
+	font-size: clamp(0.875rem, 1.4vw, 0.9375rem);
+	line-height: 1.5;
+	letter-spacing: 0.05em;
+}
+
+/* Purchase buttons (ACF repeater) — outlined pills, wrapping onto new rows. */
+.book-hero__buttons {
+	@apply mt-2 flex flex-wrap gap-4;
+}
+
+/* Book body — author-composed content on a cream band. */
+.book-body {
+	@apply bg-primary-100 w-full py-16 lg:py-24;
+}
