@@ -19,6 +19,37 @@
  */
 import '@_tw/typography/block-editor-classes';
 
+/**
+ * Default new blocks to the theme's "wide" width.
+ *
+ * Out of the box blocks are inserted with Align: None (content width). This
+ * filter sets the default `align` attribute to `wide` for every block that
+ * supports wide alignment, so newly inserted content fills the wider column
+ * without choosing "Wide width" each time. Existing blocks keep whatever
+ * alignment they were saved with. Registered at module scope (before core
+ * blocks register) so the default applies to them.
+ */
+wp.hooks.addFilter(
+	'blocks.registerBlockType',
+	'dlnorrisbooks/default-wide-align',
+	(settings) => {
+		const align = settings.supports && settings.supports.align;
+		const allowsWide =
+			align === true || (Array.isArray(align) && align.includes('wide'));
+
+		if (allowsWide) {
+			settings.attributes = settings.attributes || {};
+			settings.attributes.align = {
+				...settings.attributes.align,
+				type: 'string',
+				default: 'wide',
+			};
+		}
+
+		return settings;
+	}
+);
+
 wp.domReady(() => {
 	/**
 	 * Add support for Tailwind Typography’s `lead` class via a block style.

@@ -20,10 +20,26 @@
  * Add horizontal padding for smaller screens.
  */
 .entry-header,
-.entry-content {
+.entry-content,
+.editor-visual-editor__post-title-wrapper,
+.edit-post-visual-editor__post-title-wrapper {
 	@apply px-8;
 }
 
 /**
  * Add your editor styles below:
  */
+
+/**
+ * Match the post title to the body's default (wide) alignment.
+ *
+ * The editor gives the title the content width (48rem) and centres it, while
+ * body blocks now default to Wide. Widen the title to the wide size — with the
+ * matching horizontal padding above — so the title's left edge lines up with
+ * the wide content blocks.
+ */
+.editor-post-title.editor-post-title__input,
+.editor-visual-editor__post-title-wrapper > .editor-post-title,
+.edit-post-visual-editor__post-title-wrapper > .editor-post-title {
+	max-width: var(--wp--style--global--wide-size);
+}

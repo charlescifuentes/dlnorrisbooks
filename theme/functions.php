@@ -180,6 +180,7 @@ function dlnorrisbooks_enqueue_block_editor_script() {
 			array(
 				'wp-blocks',
 				'wp-edit-post',
+				'wp-hooks',
 			),
 			DLNORRISBOOKS_VERSION,
 			true
