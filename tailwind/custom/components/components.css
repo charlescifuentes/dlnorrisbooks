@@ -61,10 +61,45 @@
 	@apply max-w-none px-0;
 }
 
+/*
+ * Floated media (alignleft / alignright).
+ *
+ * `.entry-content` is full-width (so alignfull/alignwide blocks can break out
+ * edge-to-edge), which means a floated child would otherwise attach to the
+ * viewport edge and, if tall, spill past the content into the next section.
+ * These rules keep floats inside the centred content column, cap their size so
+ * text still has room to wrap, and `flow-root` on the container contains them.
+ */
+.entry-content {
+	@apply flow-root;
+}
+
+.entry-content > .alignleft,
+.entry-content > .alignright {
+	width: auto;
+	max-width: min(50%, calc(var(--container-content) / 2));
+	padding-inline: 0;
+}
+
 .entry-content > .alignleft {
-	@apply float-left mr-8;
+	float: left;
+	/* Align the float's left edge with the (wide) text column, then a gutter. */
+	margin-inline-start: max(1.5rem, calc((100% - var(--container-wide)) / 2));
+	margin-inline-end: 2rem;
 }
 
 .entry-content > .alignright {
-	@apply float-right ml-8;
+	float: right;
+	margin-inline-end: max(1.5rem, calc((100% - var(--container-wide)) / 2));
+	margin-inline-start: 2rem;
+}
+
+/* On narrow screens, stop floating and let media span the column. */
+@media (width < 40rem) {
+	.entry-content > .alignleft,
+	.entry-content > .alignright {
+		float: none;
+		max-width: 100%;
+		margin-inline: auto;
+	}
 }

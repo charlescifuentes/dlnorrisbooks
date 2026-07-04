@@ -81,8 +81,8 @@
 	--color-ink: var(--color-neutral-800);
 	--color-slate: var(--color-neutral-400);
 
-	--container-content: var(--wp--style--global--content-size, 42rem);
-	--container-wide: var(--wp--style--global--wide-size, 72rem);
+	--container-content: var(--wp--style--global--content-size, 48rem);
+	--container-wide: var(--wp--style--global--wide-size, 80rem);
 
 	/* Inter = UI chrome; Newsreader = editorial content */
 	--font-sans:

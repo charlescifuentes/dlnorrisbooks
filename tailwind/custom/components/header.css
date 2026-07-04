@@ -9,11 +9,14 @@
  */
 
 .site-header {
-	@apply relative w-full border-b border-border bg-neutral-050;
+	@apply relative w-full border-b border-border bg-blush;
 }
 
+/* Content is constrained to the shared wide container + gutters (matching the
+ * body section blocks and the footer) so all three line up; the blush band
+ * above stays full-width. */
 .site-header__inner {
-	@apply relative flex w-full items-center justify-between gap-4 bg-blush px-8 py-5 sm:px-10 lg:px-16 lg:py-6 xl:px-20 2xl:px-24;
+	@apply relative mx-auto flex w-full max-w-wide items-center justify-between gap-4 px-6 py-5 sm:px-10 lg:px-16 lg:py-6 xl:px-20;
 }
 
 .site-header__brand {

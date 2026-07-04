@@ -53,7 +53,8 @@
 	@apply mt-2 flex flex-wrap gap-4;
 }
 
-/* Book body — author-composed content on a cream band. */
+/* Book body — author-composed content on a cream band. Floated images are
+ * handled globally in components.css (`.entry-content > .alignleft/right`). */
 .book-body {
 	@apply bg-primary-100 w-full py-16 lg:py-24;
 }
