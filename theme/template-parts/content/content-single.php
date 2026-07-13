@@ -34,7 +34,6 @@ $dlnorrisbooks_category = ( is_array( $dlnorrisbooks_terms ) && ! empty( $dlnorr
 				)
 			);
 			?>
-			<div class="post-hero__overlay"></div>
 		</div>
 	<?php endif; ?>
 

@@ -8,19 +8,16 @@
  * positioning, or divider rules.
  */
 
-/* Hero — full-bleed featured image under a soft dark gradient. */
+/* Hero — full-bleed band that shows the whole featured image (no crop), matted
+ * on a soft ground so square/portrait images sit top-to-bottom without being
+ * cut off. */
 .post-hero {
-	@apply relative w-full overflow-hidden bg-neutral-800;
-	height: clamp(20rem, 38vw, 34rem);
+	@apply flex w-full items-center justify-center overflow-hidden bg-primary-100;
+	height: clamp(22rem, 52vw, 40rem);
 }
 
 .post-hero__img {
-	@apply absolute inset-0 size-full object-cover;
-}
-
-.post-hero__overlay {
-	@apply pointer-events-none absolute inset-0;
-	background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(23, 23, 23, 0.25));
+	@apply block size-full object-contain;
 }
 
 /* Body band — the article reads on a clean light ground. */
