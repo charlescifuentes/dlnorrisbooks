@@ -11,11 +11,14 @@
 	"textdomain": "dlnorrisbooks",
 	"attributes": {
 		"align": { "type": "string", "default": "full" },
+		"showHeading": { "type": "boolean", "default": true },
 		"eyebrow": { "type": "string", "default": "Dispatches" },
 		"title": { "type": "string", "default": "Recent Stories" },
 		"count": { "type": "number", "default": 4 },
+		"showCta": { "type": "boolean", "default": true },
 		"ctaText": { "type": "string", "default": "View Archive" },
-		"ctaUrl": { "type": "string", "default": "" }
+		"ctaUrl": { "type": "string", "default": "" },
+		"paginate": { "type": "boolean", "default": false }
 	},
 	"supports": {
 		"align": [ "full" ],

@@ -270,6 +270,94 @@ function dlnorrisbooks_register_blocks() {
 add_action( 'init', 'dlnorrisbooks_register_blocks' );
 
 /**
+ * Detect a request for page 2+ of a static page whose Recent Stories block
+ * drives its own pagination (e.g. `/blog/2/`).
+ *
+ * On a static page WordPress reads the trailing number as `<!--nextpage-->`
+ * pagination. Because the page itself isn't split it would otherwise 404 the
+ * request and canonical-redirect back to page 1 — but here the block runs its
+ * own query off that page number, so those two behaviours are suppressed for
+ * matching pages only.
+ *
+ * @param WP_Query|null $query Optional query to inspect. Defaults to the main query.
+ * @return bool
+ */
+function dlnorrisbooks_is_paginated_stories_request( $query = null ) {
+	if ( ! $query instanceof WP_Query ) {
+		$query = isset( $GLOBALS['wp_query'] ) ? $GLOBALS['wp_query'] : null;
+	}
+
+	$dlnorrisbooks_page = (int) $query->get( 'page' );
+
+	if ( ! $query instanceof WP_Query || $dlnorrisbooks_page < 2 ) {
+		return false;
+	}
+
+	$dlnorrisbooks_post = $query->get_queried_object();
+
+	if (
+		! $dlnorrisbooks_post instanceof WP_Post ||
+		! has_block( 'dlnorrisbooks/recent-stories', $dlnorrisbooks_post )
+	) {
+		return false;
+	}
+
+	foreach ( parse_blocks( $dlnorrisbooks_post->post_content ) as $dlnorrisbooks_block ) {
+		if (
+			'dlnorrisbooks/recent-stories' !== $dlnorrisbooks_block['blockName'] ||
+			empty( $dlnorrisbooks_block['attrs']['paginate'] )
+		) {
+			continue;
+		}
+
+		// Only treat the page as valid when it's within range, so an
+		// out-of-range number (e.g. /blog/99/) still 404s normally.
+		$dlnorrisbooks_per_page = ! empty( $dlnorrisbooks_block['attrs']['count'] )
+			? (int) $dlnorrisbooks_block['attrs']['count']
+			: 4;
+		$dlnorrisbooks_published = (int) wp_count_posts( 'post' )->publish;
+		$dlnorrisbooks_max_pages = $dlnorrisbooks_per_page > 0
+			? (int) ceil( $dlnorrisbooks_published / $dlnorrisbooks_per_page )
+			: 1;
+
+		return $dlnorrisbooks_page <= $dlnorrisbooks_max_pages;
+	}
+
+	return false;
+}
+
+/**
+ * Keep page 2+ of a paginated Recent Stories page from being treated as a 404.
+ *
+ * @param bool     $preempt Whether to short-circuit default 404 handling.
+ * @param WP_Query $query   The query being processed.
+ * @return bool
+ */
+function dlnorrisbooks_prevent_stories_404( $preempt, $query ) {
+	if ( dlnorrisbooks_is_paginated_stories_request( $query ) ) {
+		return true;
+	}
+
+	return $preempt;
+}
+add_filter( 'pre_handle_404', 'dlnorrisbooks_prevent_stories_404', 10, 2 );
+
+/**
+ * Stop WordPress canonical-redirecting `/blog/2/` back to `/blog/`.
+ *
+ * @param string $redirect_url The intended redirect URL.
+ * @return string|false
+ */
+function dlnorrisbooks_allow_block_pagination( $redirect_url ) {
+	if ( dlnorrisbooks_is_paginated_stories_request() ) {
+		return false;
+	}
+
+	return $redirect_url;
+}
+add_filter( 'redirect_canonical', 'dlnorrisbooks_allow_block_pagination' );
+
+/**
  * Custom post types.
  */
 require get_template_directory() . '/inc/post-types.php';
