@@ -28,11 +28,23 @@ import '@_tw/typography/block-editor-classes';
  * without choosing "Wide width" each time. Existing blocks keep whatever
  * alignment they were saved with. Registered at module scope (before core
  * blocks register) so the default applies to them.
+ *
+ * Excluded on the `post` editor: single posts read in the narrower
+ * content-width column (matching the single-post design), so blog post content
+ * should default to content width, not wide. Pages and the `book` CPT keep the
+ * wide default so their section canvas fills out.
  */
+const dlnorrisbooksEditorPostType =
+	(window.dlnorrisbooksTheme && window.dlnorrisbooksTheme.postType) || '';
+
 wp.hooks.addFilter(
 	'blocks.registerBlockType',
 	'dlnorrisbooks/default-wide-align',
 	(settings) => {
+		if (dlnorrisbooksEditorPostType === 'post') {
+			return settings;
+		}
+
 		const align = settings.supports && settings.supports.align;
 		const allowsWide =
 			align === true || (Array.isArray(align) && align.includes('wide'));

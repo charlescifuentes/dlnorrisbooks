@@ -1,0 +1,142 @@
+/**
+ * Single Post — editorial article: a full-bleed hero, a centered intro
+ * (category eyebrow + italic title + ornamental flourish), the reading-column
+ * body, an author sign-off, and a "You might also enjoy" related grid.
+ * Mirrors the Figma single-post template (node 96:976).
+ *
+ * Unlayered so Tailwind preflight does not flatten the card borders, hero
+ * positioning, or divider rules.
+ */
+
+/* Hero — full-bleed featured image under a soft dark gradient. */
+.post-hero {
+	@apply relative w-full overflow-hidden bg-neutral-800;
+	height: clamp(20rem, 38vw, 34rem);
+}
+
+.post-hero__img {
+	@apply absolute inset-0 size-full object-cover;
+}
+
+.post-hero__overlay {
+	@apply pointer-events-none absolute inset-0;
+	background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(23, 23, 23, 0.25));
+}
+
+/* Body band — the article reads on a clean light ground. */
+.post-body-band {
+	@apply w-full bg-white py-14 lg:py-20;
+}
+
+/* Intro — back link above a centered heading block. */
+.post-intro {
+	@apply mx-auto w-full max-w-content px-6;
+}
+
+.post-back {
+	@apply inline-flex items-center gap-2 font-sans text-eyebrow font-semibold tracking-eyebrow text-neutral-500 uppercase no-underline transition-colors duration-200;
+}
+
+.post-back:hover {
+	@apply text-espresso;
+}
+
+.post-back__icon {
+	@apply shrink-0;
+}
+
+.post-intro__heading {
+	@apply mt-10 flex flex-col items-center gap-4 text-center;
+}
+
+.post-eyebrow {
+	@apply font-sans text-eyebrow font-normal tracking-eyebrow text-[#8b827a] uppercase;
+}
+
+.post-title {
+	@apply m-0 font-editorial font-normal text-foreground italic;
+	font-size: clamp(2rem, 4vw, 3rem);
+	line-height: 1.2;
+}
+
+/* Ornamental divider — two short rules flanking a small mark. */
+.post-flourish {
+	@apply mt-1 flex items-center justify-center gap-4 text-espresso;
+}
+
+.post-flourish__line {
+	@apply block h-px w-12 bg-espresso;
+}
+
+.post-flourish__mark {
+	@apply font-editorial text-lg leading-none;
+}
+
+/* Body sits in `.entry-content`; the reading column is handled globally. */
+.post-single .entry-content {
+	@apply mt-12;
+}
+
+/*
+ * Floated media on single posts aligns to the content column, not the wide
+ * column. The global rule (components.css) aligns floats to `--container-wide`
+ * because generic pages/books use an alignwide body; a single post reads at
+ * content width, so without this a left/right float juts into the gutter,
+ * detached from the narrower text column.
+ */
+.post-single .entry-content > .alignleft {
+	margin-inline-start: max(1.5rem, calc((100% - var(--container-content)) / 2));
+}
+
+.post-single .entry-content > .alignright {
+	margin-inline-end: max(1.5rem, calc((100% - var(--container-content)) / 2));
+}
+
+/* Related — "You might also enjoy" cream band with two cards. */
+.related-stories {
+	@apply w-full border-t border-[#cfc5bc] bg-primary-100 py-16 lg:py-20;
+}
+
+.related-stories__inner {
+	@apply mx-auto flex w-full max-w-wide flex-col gap-12 px-6 sm:px-10 lg:px-16 xl:px-20;
+}
+
+.related-stories__title {
+	@apply m-0 text-center font-sans text-eyebrow font-semibold tracking-eyebrow text-espresso uppercase;
+}
+
+.related-stories__grid {
+	@apply grid grid-cols-1 gap-6 md:grid-cols-2;
+}
+
+.related-card {
+	@apply flex items-stretch overflow-hidden border border-[#cfc5bc] bg-[#fdf8f6] no-underline transition-colors duration-200;
+}
+
+.related-card:hover {
+	@apply border-neutral-400;
+}
+
+.related-card__media {
+	@apply relative aspect-square w-32 shrink-0 overflow-hidden bg-secondary-200 sm:w-44;
+}
+
+.related-card__img {
+	@apply absolute inset-0 size-full object-cover transition-transform duration-300;
+}
+
+.related-card:hover .related-card__img {
+	@apply scale-105;
+}
+
+.related-card__body {
+	@apply flex flex-col justify-center gap-2 p-6;
+}
+
+.related-card__eyebrow {
+	@apply font-sans text-[0.625rem] tracking-[0.15em] text-[#8b827a] uppercase;
+}
+
+.related-card__title {
+	@apply m-0 font-editorial text-2xl leading-snug font-normal text-foreground;
+}

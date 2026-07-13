@@ -186,7 +186,11 @@ function dlnorrisbooks_enqueue_block_editor_script() {
 			true
 		);
 		wp_add_inline_script( 'dlnorrisbooks-editor', "tailwindTypographyClasses = '" . esc_attr( DLNORRISBOOKS_TYPOGRAPHY_CLASSES ) . "'.split(' ');", 'before' );
-		wp_add_inline_script( 'dlnorrisbooks-editor', 'window.dlnorrisbooksTheme = { uri: "' . esc_url( get_template_directory_uri() ) . '" };', 'before' );
+		wp_add_inline_script(
+			'dlnorrisbooks-editor',
+			'window.dlnorrisbooksTheme = { uri: "' . esc_url( get_template_directory_uri() ) . '", postType: "' . esc_js( $current_screen->post_type ) . '" };',
+			'before'
+		);
 	}
 }
 add_action( 'enqueue_block_assets', 'dlnorrisbooks_enqueue_block_editor_script' );
