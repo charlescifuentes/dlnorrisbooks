@@ -37,7 +37,19 @@
 	@apply block h-5 w-4 shrink-0;
 }
 
-/* The heading is centred; the intro reads as a normal paragraph beneath it. */
 .page-intro__text {
-	@apply mt-16 mb-0 text-left font-editorial text-body text-neutral-500;
+	@apply mb-0 font-editorial text-neutral-500;
+}
+
+/* The heading is centred; body copy beneath it reads as a normal paragraph. */
+.page-intro__text--paragraph {
+	@apply mt-16 text-left text-body;
+}
+
+/* The Contact page uses the same component with a pull quote instead
+ * (Figma node 112:905). */
+.page-intro__text--quote {
+	@apply mt-12 text-center italic;
+	font-size: clamp(1.5rem, 2.6vw, 2rem);
+	line-height: 1.625;
 }

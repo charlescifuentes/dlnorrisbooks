@@ -1,0 +1,101 @@
+/**
+ * Contact — a cream form card beside a sidebar of contact details.
+ * Mirrors the Figma Main Content Area (node 116:1148).
+ *
+ * Unlayered so Tailwind preflight does not flatten the card border, the label
+ * rules, or the underlined form fields.
+ */
+
+/*
+ * No top padding: the section is designed to sit directly under the Page Intro,
+ * which supplies the space above it (the Figma frame likewise carries only
+ * bottom padding).
+ */
+.contact {
+	@apply w-full bg-white pb-16;
+}
+
+.contact__inner {
+	@apply mx-auto grid w-full grid-cols-1 gap-12 px-6 sm:px-10 lg:grid-cols-12 lg:px-6;
+	max-width: 71.25rem;
+}
+
+/* Form card — seven of twelve columns, cream, hairline border. */
+.contact__form {
+	@apply border border-[#cfc5bc] bg-cream p-8 sm:p-12 lg:col-span-7;
+}
+
+.contact__details {
+	@apply flex flex-col gap-12 lg:col-span-5;
+}
+
+/* Detail group — a ruled label above a short stack of lines. */
+.contact-detail__label {
+	@apply m-0 border-b border-[#cfc5bc] pb-2 font-sans text-eyebrow font-semibold tracking-[0.1em] text-[#7d766e] uppercase;
+}
+
+.contact-detail__group {
+	@apply mt-4 flex flex-col gap-1;
+}
+
+.contact-detail__name {
+	@apply m-0 font-editorial text-base leading-normal text-[#1c1b1b];
+}
+
+.contact-detail__body {
+	@apply m-0 font-editorial text-caption leading-relaxed tracking-[0.05em] text-neutral-500;
+}
+
+/*
+ * Form skin.
+ *
+ * The form itself is a Jetpack Form block, so this styles whatever fields it
+ * renders. Jetpack's own class names have moved between versions, so these
+ * rules key off element types instead — that holds regardless of the markup
+ * Jetpack emits, and degrades to a plain form if the block is ever swapped out.
+ */
+.contact__form :is(input[type="text"], input[type="email"], input[type="url"], input[type="tel"], input[type="number"], textarea, select) {
+	@apply w-full rounded-none border-0 border-b border-black bg-transparent px-0 py-3 font-editorial text-base text-foreground shadow-none transition-colors duration-200;
+}
+
+/*
+ * Written as its own rule rather than an `@apply placeholder:…` on the rule
+ * above: the variant wraps the selector it is applied to, and wrapping an
+ * `:is()` list emits a malformed selector that browsers drop.
+ */
+.contact__form :is(input, textarea)::placeholder {
+	@apply text-[#cfc5bc] opacity-100;
+}
+
+.contact__form :is(input, textarea, select):focus {
+	@apply border-espresso ring-0 outline-none;
+}
+
+.contact__form textarea {
+	@apply min-h-40 resize-y leading-relaxed;
+}
+
+.contact__form label {
+	@apply mb-2 block font-sans text-eyebrow font-semibold tracking-[0.1em] text-[#7d766e] uppercase;
+}
+
+.contact__form :is(button, input[type="submit"], .wp-block-button__link) {
+	@apply inline-flex cursor-pointer items-center justify-center rounded-none border border-black bg-transparent px-12 py-4 font-sans text-eyebrow font-semibold tracking-[0.1em] text-black uppercase no-underline transition-colors duration-200;
+}
+
+.contact__form :is(button, input[type="submit"], .wp-block-button__link):hover {
+	@apply bg-espresso text-cream;
+}
+
+/*
+ * Field rhythm. Which element wraps a field depends on the form block, so this
+ * spaces the form's own children and the known field wrappers alike rather than
+ * relying on one of them being present.
+ */
+.contact__form form > * + * {
+	@apply mt-7;
+}
+
+.contact__form :is(.jetpack-field, .grunion-field-wrap) {
+	@apply mb-7;
+}

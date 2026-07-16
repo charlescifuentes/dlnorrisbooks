@@ -16,6 +16,13 @@ $dlnorrisbooks_eyebrow = isset( $attributes['eyebrow'] ) ? $attributes['eyebrow'
 $dlnorrisbooks_title   = isset( $attributes['title'] ) ? $attributes['title'] : '';
 $dlnorrisbooks_intro   = isset( $attributes['intro'] ) ? $attributes['intro'] : '';
 
+// `paragraph` reads as body copy; `quote` is the large centered italic used on
+// the Contact page.
+$dlnorrisbooks_intro_style = isset( $attributes['introStyle'] ) ? $attributes['introStyle'] : 'paragraph';
+$dlnorrisbooks_intro_style = in_array( $dlnorrisbooks_intro_style, array( 'paragraph', 'quote' ), true )
+	? $dlnorrisbooks_intro_style
+	: 'paragraph';
+
 $dlnorrisbooks_wrapper = get_block_wrapper_attributes( array( 'class' => 'page-intro not-prose' ) );
 ?>
 <section <?php echo $dlnorrisbooks_wrapper; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
@@ -37,7 +44,9 @@ $dlnorrisbooks_wrapper = get_block_wrapper_attributes( array( 'class' => 'page-i
 		</div>
 
 		<?php if ( '' !== $dlnorrisbooks_intro ) : ?>
-			<p class="page-intro__text"><?php echo wp_kses_post( $dlnorrisbooks_intro ); ?></p>
+			<p class="page-intro__text page-intro__text--<?php echo esc_attr( $dlnorrisbooks_intro_style ); ?>">
+				<?php echo wp_kses_post( $dlnorrisbooks_intro ); ?>
+			</p>
 		<?php endif; ?>
 	</div>
 </section>

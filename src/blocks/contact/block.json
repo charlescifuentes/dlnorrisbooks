@@ -1,0 +1,37 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "dlnorrisbooks/contact",
+	"version": "0.1.0",
+	"title": "Contact",
+	"category": "dlnorrisbooks",
+	"icon": "email-alt",
+	"description": "A contact form card beside a sidebar of contact details. Drop a Form block into the card to handle submissions.",
+	"keywords": [ "contact", "form", "correspondence", "address" ],
+	"textdomain": "dlnorrisbooks",
+	"attributes": {
+		"align": { "type": "string", "default": "full" },
+		"details": {
+			"type": "array",
+			"default": [
+				{
+					"label": "Representation",
+					"name": "DL Norris",
+					"body": "Attn: DLNorris<br><em>info@dlnorris.com</em>"
+				},
+				{
+					"label": "Postal Address",
+					"name": "",
+					"body": "D. L. Norris Correspondence<br>P.O. Box 442, Blackwood Terrace<br>Oxford, OX1 2JD<br>United Kingdom"
+				}
+			]
+		}
+	},
+	"supports": {
+		"align": [ "full" ],
+		"anchor": true,
+		"html": false
+	},
+	"editorScript": "file:./index.js",
+	"render": "file:./render.php"
+}

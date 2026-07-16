@@ -13,7 +13,8 @@
 		"align": { "type": "string", "default": "full" },
 		"eyebrow": { "type": "string", "default": "Testimonials" },
 		"title": { "type": "string", "default": "What Readers Are Saying" },
-		"intro": { "type": "string", "default": "" }
+		"intro": { "type": "string", "default": "" },
+		"introStyle": { "type": "string", "default": "paragraph" }
 	},
 	"supports": {
 		"align": [ "full" ],
