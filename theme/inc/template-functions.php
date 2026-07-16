@@ -6,31 +6,7 @@
  */
 
 /**
- * Adds classes to primary navigation menu items.
- *
- * @param string[] $classes Menu item classes.
- * @param WP_Post  $item    Menu item object.
- * @param stdClass $args    Menu arguments.
- * @return string[]
- */
-function dlnorrisbooks_nav_menu_css_class( $classes, $item, $args ) {
-	if ( empty( $args->theme_location ) || 'menu-1' !== $args->theme_location ) {
-		return $classes;
-	}
-
-	if (
-		in_array( 'cta', $classes, true ) ||
-		false !== stripos( $item->title, 'subscribe' )
-	) {
-		$classes[] = 'menu-item-cta';
-	}
-
-	return $classes;
-}
-add_filter( 'nav_menu_css_class', 'dlnorrisbooks_nav_menu_css_class', 10, 3 );
-
-/**
- * Adds classes to primary navigation menu links.
+ * Adds classes to navigation menu links.
  *
  * @param array    $atts Menu link attributes.
  * @param WP_Post  $item Menu item object.
@@ -47,39 +23,11 @@ function dlnorrisbooks_nav_menu_link_attributes( $atts, $item, $args ) {
 		return $atts;
 	}
 
-	$is_cta = in_array( 'cta', $item->classes, true ) || false !== stripos( $item->title, 'subscribe' );
-
-	$atts['class'] = $is_cta ? 'btn-pill' : 'primary-menu__link';
+	$atts['class'] = 'primary-menu__link';
 
 	return $atts;
 }
 add_filter( 'nav_menu_link_attributes', 'dlnorrisbooks_nav_menu_link_attributes', 10, 3 );
-
-/**
- * Removes the Subscribe CTA from the primary nav (rendered separately on the right).
- *
- * @param WP_Post[] $items Menu items.
- * @param stdClass  $args  Menu arguments.
- * @return WP_Post[]
- */
-function dlnorrisbooks_exclude_header_cta_from_menu( $items, $args ) {
-	if ( empty( $args->theme_location ) || 'menu-1' !== $args->theme_location ) {
-		return $items;
-	}
-
-	return array_values(
-		array_filter(
-			$items,
-			function ( $item ) {
-				return ! (
-					in_array( 'cta', $item->classes, true ) ||
-					false !== stripos( $item->title, 'subscribe' )
-				);
-			}
-		)
-	);
-}
-add_filter( 'wp_nav_menu_objects', 'dlnorrisbooks_exclude_header_cta_from_menu', 10, 2 );
 
 /**
  * Add a pingback url auto-discovery header for single posts, pages, or attachments.

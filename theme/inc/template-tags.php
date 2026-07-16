@@ -292,63 +292,6 @@ if ( ! function_exists( 'dlnorrisbooks_site_branding' ) ) :
 	}
 endif;
 
-if ( ! function_exists( 'dlnorrisbooks_get_header_cta_item' ) ) :
-	/**
-	 * Returns the primary menu item marked as the header CTA.
-	 *
-	 * @return WP_Post|null
-	 */
-	function dlnorrisbooks_get_header_cta_item() {
-		$locations = get_nav_menu_locations();
-
-		if ( empty( $locations['menu-1'] ) ) {
-			return null;
-		}
-
-		$items = wp_get_nav_menu_items( $locations['menu-1'] );
-
-		if ( empty( $items ) ) {
-			return null;
-		}
-
-		foreach ( $items as $item ) {
-			if (
-				in_array( 'cta', $item->classes, true ) ||
-				false !== stripos( $item->title, 'subscribe' )
-			) {
-				return $item;
-			}
-		}
-
-		return null;
-	}
-endif;
-
-if ( ! function_exists( 'dlnorrisbooks_header_cta_link' ) ) :
-	/**
-	 * Prints the mobile header CTA button.
-	 *
-	 * @param string $modifier_class Additional wrapper classes.
-	 */
-	function dlnorrisbooks_header_cta_link( $modifier_class = '' ) {
-		$item = dlnorrisbooks_get_header_cta_item();
-
-		if ( ! $item ) {
-			return;
-		}
-
-		$classes = trim( 'header-cta ' . $modifier_class );
-
-		printf(
-			'<div class="%1$s"><a class="btn-pill" href="%2$s"%3$s>%4$s</a></div>',
-			esc_attr( $classes ),
-			esc_url( $item->url ),
-			$item->target ? ' target="' . esc_attr( $item->target ) . '"' : '',
-			esc_html( $item->title )
-		);
-	}
-endif;
-
 if ( ! function_exists( 'dlnorrisbooks_content_class' ) ) :
 	/**
 	 * Displays the class names for the post content wrapper.

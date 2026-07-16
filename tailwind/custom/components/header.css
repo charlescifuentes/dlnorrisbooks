@@ -1,8 +1,16 @@
 /**
- * Site header — logo left, nav center, Subscribe right (desktop).
+ * Site header — logo left, nav right (desktop).
  *
  * Colors mirror the Figma Header component: neutral/050 outer shell with a
  * primary/200 (blush) bar, espresso brand + nav, teal accent on interaction.
+ *
+ * Deviates from the Figma in two ways, deliberately. The mockup centres the nav
+ * and puts a Subscribe pill on the right; the nav has since grown past the four
+ * links it was drawn with, and a centred nav is positioned against the header
+ * rather than against the space left over by the brand, so it collided with the
+ * logo below ~1124px. The nav now sits in normal flow at the right-hand end,
+ * where the flexbox cannot overlap its neighbours at any width, and the pill is
+ * gone — subscribing lives in the newsletter band on every page.
  *
  * Intentionally unlayered: Tailwind preflight is unlayered, so rules inside
  * @layer components lose to `* { padding: 0 }` regardless of specificity.
@@ -51,15 +59,6 @@
 	@apply static;
 }
 
-.site-header__end {
-	@apply relative z-10 flex shrink-0 items-center gap-3;
-}
-
-/* The standalone Subscribe pill is desktop-only; on mobile it lives in the menu. */
-.header-cta {
-	@apply hidden lg:block;
-}
-
 .primary-menu {
 	@apply m-0 flex list-none flex-col gap-1 p-0 lg:flex-row lg:items-center lg:gap-10 xl:gap-14;
 }
@@ -76,13 +75,6 @@
 .primary-menu .current-menu-item > .primary-menu__link,
 .primary-menu .current_page_item > .primary-menu__link {
 	@apply border-espresso text-espresso;
-}
-
-/* Desktop: nav pinned to true horizontal center of the header bar */
-@media (min-width: 1024px) {
-	.site-header__nav {
-		@apply absolute top-1/2 left-1/2 z-0 -translate-x-1/2 -translate-y-1/2;
-	}
 }
 
 /* Mobile: nav drawer below header bar */
