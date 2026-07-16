@@ -1,20 +1,73 @@
 /**
- * Testimonial — centered review quote with a flanked uppercase attribution,
- * on the same blush band as the Author section (no wavy edge).
+ * Testimonial — a review quote with an uppercase attribution, on a full-width
+ * band (no wavy edge).
+ *
+ * Two variants share this markup. `--center` is the standalone band used on the
+ * home page: quote centered in a narrow column, attribution flanked by rules.
+ * `--left` / `--right` are the zigzag reviews column (Figma node 106:567) —
+ * quotes sit in a 1140px grid, alternate sides, and consecutive blocks read as
+ * one continuous band.
  */
 
 .testimonial {
-	@apply w-full bg-blush;
+	@apply w-full;
+}
+
+.testimonial--blush {
+	@apply bg-blush;
+}
+
+.testimonial--mist {
+	@apply bg-mist;
 }
 
 .testimonial__inner {
-	@apply mx-auto flex max-w-3xl flex-col items-center gap-6 px-6 py-20 text-center sm:px-10 lg:py-24;
+	@apply mx-auto flex flex-col gap-6 px-6 py-20 sm:px-10 lg:py-24;
+}
+
+.testimonial--center .testimonial__inner {
+	@apply max-w-3xl items-center text-center;
+}
+
+.testimonial--stack .testimonial__inner {
+	@apply gap-4 lg:px-16;
+	max-width: 71.25rem;
+}
+
+/* The quote column is narrower than the band, so the two sides interlock. */
+.testimonial--stack .testimonial__quote,
+.testimonial--stack .testimonial__cite {
+	@apply max-w-content;
+}
+
+.testimonial--right .testimonial__inner {
+	@apply items-end text-right;
+}
+
+/*
+ * Stacked testimonials are one band, not several: drop the shared padding
+ * between neighbours so the space between quotes reads as a rhythm rather than
+ * as two sections butting together. The first and last keep the full band
+ * padding.
+ */
+.testimonial--stack + .testimonial--stack .testimonial__inner {
+	@apply pt-0;
+}
+
+.testimonial--stack:has(+ .testimonial--stack) .testimonial__inner {
+	@apply pb-16;
 }
 
 .testimonial__quote {
 	@apply m-0 font-editorial text-espresso italic;
 	font-size: clamp(1.375rem, 2.4vw, 1.75rem);
 	line-height: 1.45;
+}
+
+.testimonial--stack .testimonial__quote {
+	@apply text-foreground;
+	font-size: clamp(1.5rem, 2.6vw, 2rem);
+	line-height: 1.3;
 }
 
 .testimonial__quote::before {
@@ -29,10 +82,27 @@
 	@apply m-0 flex items-center justify-center gap-3 font-sans text-eyebrow font-semibold tracking-eyebrow text-coffee uppercase;
 }
 
+/* Without the flanking rules the attribution takes an em dash instead. */
+.testimonial--stack .testimonial__cite {
+	@apply justify-start font-editorial text-caption font-normal tracking-[0.05em] text-neutral-500 italic;
+}
+
+.testimonial--right .testimonial__cite {
+	@apply justify-end;
+}
+
+.testimonial--stack .testimonial__cite::before {
+	content: "\2014\00a0";
+}
+
 .testimonial__rule {
 	@apply block h-px w-8 bg-coffee/50;
 }
 
 .testimonial__source {
 	@apply not-italic;
+}
+
+.testimonial--stack .testimonial__source {
+	@apply italic;
 }

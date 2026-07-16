@@ -1,0 +1,43 @@
+/**
+ * Page Intro — the reusable page heading from the Figma "Featured Title"
+ * component (node 96:787): eyebrow, italic title, an ornamental divider of two
+ * rules flanking a small mark, and an optional intro paragraph.
+ *
+ * Unlayered so Tailwind preflight does not flatten the divider rules.
+ */
+
+.page-intro {
+	@apply w-full bg-white;
+}
+
+.page-intro__inner {
+	@apply mx-auto flex w-full max-w-content flex-col items-center gap-1.5 px-6 py-24 text-center;
+}
+
+.page-intro__eyebrow {
+	@apply m-0 font-sans text-eyebrow font-normal tracking-eyebrow text-espresso uppercase;
+}
+
+.page-intro__title {
+	@apply m-0 font-editorial font-normal text-foreground italic;
+	font-size: clamp(2rem, 4vw, 3rem);
+	line-height: 1.2;
+}
+
+/* Ornamental divider — two short rules flanking the mark. */
+.page-intro__flourish {
+	@apply mt-1 flex items-center justify-center gap-4 text-espresso;
+}
+
+.page-intro__rule {
+	@apply block h-px w-12 bg-espresso;
+}
+
+.page-intro__mark {
+	@apply block h-5 w-4 shrink-0;
+}
+
+/* The heading is centred; the intro reads as a normal paragraph beneath it. */
+.page-intro__text {
+	@apply mt-16 mb-0 text-left font-editorial text-body text-neutral-500;
+}

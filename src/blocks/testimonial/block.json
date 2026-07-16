@@ -6,7 +6,7 @@
 	"title": "Testimonial",
 	"category": "dlnorrisbooks",
 	"icon": "testimonial",
-	"description": "A centered testimonial quote with a flanked, uppercase attribution.",
+	"description": "A testimonial quote with an uppercase attribution. Centered on its own band, or aligned left/right to stack into a zigzag reviews column.",
 	"keywords": [ "testimonial", "review", "quote", "praise" ],
 	"textdomain": "dlnorrisbooks",
 	"attributes": {
@@ -15,7 +15,9 @@
 			"type": "string",
 			"default": "To read Norris is to step out of the rushing river of contemporary life and onto a quiet, moss-covered bank. Essential reading for the overwhelmed."
 		},
-		"citation": { "type": "string", "default": "The Literary Review" }
+		"citation": { "type": "string", "default": "The Literary Review" },
+		"tone": { "type": "string", "default": "blush" },
+		"side": { "type": "string", "default": "center" }
 	},
 	"supports": {
 		"align": [ "full" ],

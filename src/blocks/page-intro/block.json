@@ -1,0 +1,25 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "dlnorrisbooks/page-intro",
+	"version": "0.1.0",
+	"title": "Page Intro",
+	"category": "dlnorrisbooks",
+	"icon": "heading",
+	"description": "A centered page heading — eyebrow, italic title, ornamental divider, and an optional intro paragraph.",
+	"keywords": [ "intro", "heading", "title", "eyebrow" ],
+	"textdomain": "dlnorrisbooks",
+	"attributes": {
+		"align": { "type": "string", "default": "full" },
+		"eyebrow": { "type": "string", "default": "Testimonials" },
+		"title": { "type": "string", "default": "What Readers Are Saying" },
+		"intro": { "type": "string", "default": "" }
+	},
+	"supports": {
+		"align": [ "full" ],
+		"anchor": true,
+		"html": false
+	},
+	"editorScript": "file:./index.js",
+	"render": "file:./render.php"
+}
