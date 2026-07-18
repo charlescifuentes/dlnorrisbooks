@@ -12,6 +12,13 @@
  * where the flexbox cannot overlap its neighbours at any width, and the pill is
  * gone — subscribing lives in the newsletter band on every page.
  *
+ * The desktop nav / mobile drawer switch is at 1140px, not Tailwind's `lg`
+ * (1024px). Measured single-line, the six links + brand + gutters need ~1015px,
+ * so a 1024px viewport (minus its scrollbar) lands right on the edge and the
+ * labels wrap to two lines. 1140px — the shared content width — gives the row
+ * ~125px of slack, so the switch happens with room to spare rather than keeping
+ * the generous inter-item gaps and letting them collapse.
+ *
  * Intentionally unlayered: Tailwind preflight is unlayered, so rules inside
  * @layer components lose to `* { padding: 0 }` regardless of specificity.
  */
@@ -60,7 +67,7 @@
 }
 
 .primary-menu {
-	@apply m-0 flex list-none flex-col gap-1 p-0 lg:flex-row lg:items-center lg:gap-10 xl:gap-14;
+	@apply m-0 flex list-none flex-col gap-1 p-0 min-[1140px]:flex-row min-[1140px]:items-center min-[1140px]:gap-10 xl:gap-14;
 }
 
 .primary-menu__link {
@@ -77,8 +84,8 @@
 	@apply border-espresso text-espresso;
 }
 
-/* Mobile: nav drawer below header bar */
-@media (max-width: 1023px) {
+/* Below 1140px: nav drawer below header bar (see breakpoint note above). */
+@media (max-width: 1139px) {
 	.site-header__nav {
 		@apply pointer-events-none absolute top-full right-0 left-0 z-50 -translate-y-2 border-b border-border bg-neutral-050 opacity-0 transition-all duration-200;
 	}
@@ -101,7 +108,7 @@
 }
 
 .menu-toggle {
-	@apply relative inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-espresso bg-transparent text-espresso transition-colors duration-200 lg:hidden;
+	@apply relative inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-espresso bg-transparent text-espresso transition-colors duration-200 min-[1140px]:hidden;
 }
 
 .menu-toggle:hover {

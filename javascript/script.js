@@ -35,7 +35,7 @@ if (menuToggle && primaryNavigation && primaryMenu) {
 
 	menuLinks.forEach((link) => {
 		link.addEventListener('click', () => {
-			if (window.matchMedia('(max-width: 1023px)').matches) {
+			if (window.matchMedia('(max-width: 1139px)').matches) {
 				closeMenu();
 			}
 		});
@@ -49,7 +49,7 @@ if (menuToggle && primaryNavigation && primaryMenu) {
 	});
 
 	window.addEventListener('resize', () => {
-		if (window.matchMedia('(min-width: 1024px)').matches) {
+		if (window.matchMedia('(min-width: 1140px)').matches) {
 			closeMenu();
 		}
 	});
