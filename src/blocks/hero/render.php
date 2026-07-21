@@ -15,6 +15,12 @@ $dlnorrisbooks_subtitle = isset( $attributes['subtitle'] ) ? $attributes['subtit
 $dlnorrisbooks_cta_text = isset( $attributes['ctaText'] ) ? $attributes['ctaText'] : '';
 $dlnorrisbooks_cta_url  = isset( $attributes['ctaUrl'] ) ? $attributes['ctaUrl'] : '';
 
+// Unless a specific URL was set, the button scrolls down to the Books section
+// (anchored in the books block). '#' is the attribute's placeholder default.
+if ( '' === $dlnorrisbooks_cta_url || '#' === $dlnorrisbooks_cta_url ) {
+	$dlnorrisbooks_cta_url = '#the-books';
+}
+
 $dlnorrisbooks_assets       = get_template_directory_uri() . '/assets/images/hero/';
 $dlnorrisbooks_portrait_url = ! empty( $attributes['portraitUrl'] ) ? $attributes['portraitUrl'] : $dlnorrisbooks_assets . 'portrait.webp';
 $dlnorrisbooks_portrait_alt = isset( $attributes['portraitAlt'] ) ? $attributes['portraitAlt'] : '';

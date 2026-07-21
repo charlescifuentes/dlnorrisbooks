@@ -2,6 +2,24 @@
  * Custom styles to immediately follow Tailwind’s `base` layer
  */
 
+/* Smoothly animate in-page anchor jumps (e.g. the hero "Start Reading" button
+ * scrolling to the Books section). Disabled for visitors who prefer reduced
+ * motion. `scroll-margin-top` keeps anchored sections from sitting flush to the
+ * viewport top. */
+html {
+	scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto;
+	}
+}
+
+[id] {
+	scroll-margin-top: 2rem;
+}
+
 body {
 	@apply bg-background font-editorial text-body leading-[1.6] text-foreground antialiased;
 }

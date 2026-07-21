@@ -38,8 +38,16 @@ $dlnorrisbooks_query = new WP_Query(
 	)
 );
 
-$dlnorrisbooks_class   = 'books not-prose' . ( $dlnorrisbooks_has_waves ? '' : ' books--flat' );
-$dlnorrisbooks_wrapper = get_block_wrapper_attributes( array( 'class' => $dlnorrisbooks_class ) );
+$dlnorrisbooks_class = 'books not-prose' . ( $dlnorrisbooks_has_waves ? '' : ' books--flat' );
+
+// On the homepage the hero's "Start Reading" button scrolls to this section,
+// so expose an anchor. Scoped to the front page to avoid a duplicate id if the
+// block is ever reused elsewhere.
+$dlnorrisbooks_wrapper_args = array( 'class' => $dlnorrisbooks_class );
+if ( is_front_page() ) {
+	$dlnorrisbooks_wrapper_args['id'] = 'the-books';
+}
+$dlnorrisbooks_wrapper = get_block_wrapper_attributes( $dlnorrisbooks_wrapper_args );
 ?>
 <section <?php echo $dlnorrisbooks_wrapper; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
 	<?php if ( $dlnorrisbooks_has_waves ) : ?>
