@@ -18,7 +18,25 @@
 
 <article id="post-<?php the_ID(); ?>" <?php post_class( 'page-article' ); ?>>
 
+	<?php
+	// Cart / Checkout / My Account (WooCommerce block pages) open with the shared
+	// themed banner; a no-op on every other page.
+	if ( function_exists( 'dlnorrisbooks_wc_page_banner' ) ) {
+		dlnorrisbooks_wc_page_banner();
+	}
+	?>
+
+	<?php
+	// Store pages (Cart / Checkout / My Account) are WooCommerce block UI, not
+	// prose. Skip Tailwind Typography on them so its heading/link/spacing rules
+	// don't fight the block layout; every other page keeps the reading styles.
+	$dlnorrisbooks_is_store_page = function_exists( 'is_woocommerce' ) && ( is_cart() || is_checkout() || is_account_page() );
+	?>
+	<?php if ( $dlnorrisbooks_is_store_page ) : ?>
+	<div class="entry-content wc-store-content not-prose">
+	<?php else : ?>
 	<div <?php dlnorrisbooks_content_class( 'entry-content' ); ?>>
+	<?php endif; ?>
 		<?php
 		the_content();
 

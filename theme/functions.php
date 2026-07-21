@@ -124,6 +124,17 @@ if ( ! function_exists( 'dlnorrisbooks_setup' ) ) :
 		// Add support for responsive embedded content.
 		add_theme_support( 'responsive-embeds' );
 
+		/*
+		 * WooCommerce. Declaring support hands the store WordPress's own
+		 * header/footer via this theme and unlocks the product gallery
+		 * features; the store is then themed through hooks + CSS in
+		 * `inc/woocommerce.php` rather than template overrides.
+		 */
+		add_theme_support( 'woocommerce' );
+		add_theme_support( 'wc-product-gallery-zoom' );
+		add_theme_support( 'wc-product-gallery-lightbox' );
+		add_theme_support( 'wc-product-gallery-slider' );
+
 		// Remove support for block templates.
 		remove_theme_support( 'block-templates' );
 	}
@@ -370,6 +381,11 @@ require get_template_directory() . '/inc/post-types.php';
  * Advanced Custom Fields field groups (no-ops when ACF is inactive).
  */
 require get_template_directory() . '/inc/acf-fields.php';
+
+/**
+ * WooCommerce integration (no-op when WooCommerce is inactive).
+ */
+require get_template_directory() . '/inc/woocommerce.php';
 
 /**
  * Custom template tags for this theme.
