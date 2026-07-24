@@ -1,8 +1,11 @@
 /**
- * Site footer — brand left, nav center, copyright right on a pale teal band.
+ * Site footer — two tiers on a pale teal band.
  *
- * Mirrors the Figma Footer component (tertiary/100 background, primary/900
- * text, Newsreader italic wordmark, Inter underlined nav links).
+ *  - Main tier: brand wordmark (left) beside two stacked link columns, each
+ *    headed by its assigned menu name ("Featured Short Stories", "Stories of
+ *    the Heart").
+ *  - Sub-footer tier: copyright (left) with a horizontal utility menu (right),
+ *    separated by a hairline rule.
  *
  * Intentionally unlayered: Tailwind preflight is unlayered, so rules inside
  * @layer components lose to `* { padding: 0 }` regardless of specificity.
@@ -12,33 +15,77 @@
 	@apply w-full border-t border-border bg-mist;
 }
 
-/* Content shares the wide container + gutters used by the header and body
- * section blocks so all three line up; the mist band stays full-width. */
+/* ---- Main tier ------------------------------------------------------------ */
+
+/* Three equal columns — brand, then the two link menus — that share the wide
+ * container + gutters used by the header and body section blocks so everything
+ * lines up; the mist band stays full-width. Columns stack and center on mobile. */
 .site-footer__inner {
-	@apply mx-auto flex w-full max-w-wide flex-col items-center gap-6 px-6 py-12 text-center sm:px-10 lg:flex-row lg:items-center lg:justify-between lg:gap-8 lg:px-16 lg:py-16 lg:text-left xl:px-20;
+	@apply mx-auto grid w-full max-w-wide grid-cols-1 items-start gap-10 px-6 py-12 text-center sm:grid-cols-3 sm:gap-12 sm:text-left sm:px-10 lg:gap-16 lg:px-16 lg:py-16 xl:px-20;
 }
 
 .site-footer__brand {
-	@apply font-editorial text-2xl leading-none font-normal tracking-widest text-espresso uppercase italic no-underline transition-colors duration-200;
+	@apply font-editorial text-2xl leading-none font-normal tracking-widest text-espresso uppercase italic no-underline transition-colors duration-200 sm:pt-1;
 }
 
 .site-footer__brand:hover {
 	@apply text-clay;
 }
 
-.site-footer__menu {
+.site-footer__col {
+	@apply flex flex-col items-center gap-4 sm:items-start;
+}
+
+.site-footer__col-title {
+	@apply m-0 font-sans text-eyebrow font-semibold tracking-eyebrow text-slate uppercase;
+}
+
+/* Vertical link list. */
+.site-footer__list {
+	@apply m-0 flex list-none flex-col items-center gap-2.5 p-0 sm:items-start;
+}
+
+.site-footer__list a {
+	@apply font-editorial text-body font-normal text-espresso no-underline transition-colors duration-200;
+}
+
+.site-footer__list a:hover,
+.site-footer__list a:focus-visible {
+	@apply text-clay underline underline-offset-4;
+}
+
+/* Second-level (sub-page) links sit tucked in and lighter. */
+.site-footer__list .sub-menu {
+	@apply m-0 mt-1.5 flex list-none flex-col gap-1.5 p-0 sm:pl-4;
+}
+
+.site-footer__list .sub-menu a {
+	@apply text-caption text-slate;
+}
+
+/* ---- Sub-footer tier ------------------------------------------------------ */
+
+.site-subfooter {
+	@apply w-full border-t border-border;
+}
+
+.site-subfooter__inner {
+	@apply mx-auto flex w-full max-w-wide flex-col items-center gap-4 px-6 py-6 text-center sm:px-10 lg:flex-row lg:justify-between lg:px-16 lg:text-left xl:px-20;
+}
+
+.site-subfooter__copyright {
+	@apply m-0 font-editorial text-eyebrow font-normal tracking-widest text-espresso uppercase opacity-60;
+}
+
+.site-subfooter__menu {
 	@apply m-0 flex list-none flex-wrap items-center justify-center gap-x-8 gap-y-2 p-0;
 }
 
-.site-footer__link {
+.site-subfooter__menu a {
 	@apply font-sans text-eyebrow font-normal tracking-widest text-espresso uppercase underline underline-offset-4 transition-colors duration-200;
 }
 
-.site-footer__link:hover,
-.site-footer__link:focus-visible {
+.site-subfooter__menu a:hover,
+.site-subfooter__menu a:focus-visible {
 	@apply text-clay;
-}
-
-.site-footer__copyright {
-	@apply m-0 font-editorial text-eyebrow font-normal tracking-widest text-espresso uppercase opacity-60;
 }

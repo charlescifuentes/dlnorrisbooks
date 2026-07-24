@@ -14,11 +14,8 @@
  * @return array
  */
 function dlnorrisbooks_nav_menu_link_attributes( $atts, $item, $args ) {
-	if ( ! empty( $args->theme_location ) && 'menu-2' === $args->theme_location ) {
-		$atts['class'] = 'site-footer__link';
-		return $atts;
-	}
-
+	// Footer menus are styled via descendant selectors, so they need no
+	// per-item class; only the primary header nav is tagged here.
 	if ( empty( $args->theme_location ) || 'menu-1' !== $args->theme_location ) {
 		return $atts;
 	}

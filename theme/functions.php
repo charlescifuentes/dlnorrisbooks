@@ -87,11 +87,15 @@ if ( ! function_exists( 'dlnorrisbooks_setup' ) ) :
 			)
 		);
 
-		// This theme uses wp_nav_menu() in two locations.
+		// This theme uses wp_nav_menu() in several locations: the primary header
+		// nav, two stacked link columns in the footer (each headed by its own
+		// menu name), and a horizontal legal/utility menu in the sub-footer.
 		register_nav_menus(
 			array(
 				'menu-1' => __( 'Primary', 'dlnorrisbooks' ),
-				'menu-2' => __( 'Footer Menu', 'dlnorrisbooks' ),
+				'menu-3' => __( 'Footer Column 1', 'dlnorrisbooks' ),
+				'menu-4' => __( 'Footer Column 2', 'dlnorrisbooks' ),
+				'menu-2' => __( 'Footer — Sub-footer (horizontal)', 'dlnorrisbooks' ),
 			)
 		);
 

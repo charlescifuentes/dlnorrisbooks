@@ -292,6 +292,50 @@ if ( ! function_exists( 'dlnorrisbooks_site_branding' ) ) :
 	}
 endif;
 
+if ( ! function_exists( 'dlnorrisbooks_footer_menu_column' ) ) :
+	/**
+	 * Renders one footer link column: a heading taken from the assigned menu's
+	 * own name (e.g. "Featured Short Stories") followed by its links stacked
+	 * vertically. Outputs nothing when the location has no menu assigned, so the
+	 * footer grid collapses cleanly to whatever the client has set up.
+	 *
+	 * @param string $location Registered nav-menu location (e.g. 'menu-3').
+	 */
+	function dlnorrisbooks_footer_menu_column( $location ) {
+		if ( ! has_nav_menu( $location ) ) {
+			return;
+		}
+
+		$dlnorrisbooks_locations = get_nav_menu_locations();
+		$dlnorrisbooks_menu      = wp_get_nav_menu_object( $dlnorrisbooks_locations[ $location ] );
+		$dlnorrisbooks_title     = $dlnorrisbooks_menu ? $dlnorrisbooks_menu->name : '';
+
+		printf(
+			'<nav class="site-footer__col" aria-label="%s">',
+			esc_attr( '' !== $dlnorrisbooks_title ? $dlnorrisbooks_title : __( 'Footer', 'dlnorrisbooks' ) )
+		);
+
+		if ( '' !== $dlnorrisbooks_title ) {
+			printf(
+				'<h2 class="site-footer__col-title">%s</h2>',
+				esc_html( $dlnorrisbooks_title )
+			);
+		}
+
+		wp_nav_menu(
+			array(
+				'theme_location' => $location,
+				'menu_class'     => 'site-footer__list',
+				'container'      => false,
+				'depth'          => 2,
+				'fallback_cb'    => false,
+			)
+		);
+
+		echo '</nav>';
+	}
+endif;
+
 if ( ! function_exists( 'dlnorrisbooks_content_class' ) ) :
 	/**
 	 * Displays the class names for the post content wrapper.
